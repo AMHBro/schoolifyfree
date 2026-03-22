@@ -1,59 +1,37 @@
-# React + TypeScript + Vite
+# Schoolify — منصة المدارس
 
-hamid
-ali
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. test
-test2
-test3
+مستودع يضم **واجهة داشبورد المدرسة**، **الداشبورد المركزية**، و**الـ API** (Elysia + Prisma).
 
-Currently, two official plugins are available:
+## البدء السريع
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| المكوّن | المجلد |
+|---------|--------|
+| داشبورد المدرسة (ويب) | جذر المشروع (`npm run dev`) |
+| الداشبورد المركزية | `central-dashboard/` |
+| الـ API | `backend/` (`bun run dev` أو `npm run start`) |
 
-## Expanding the ESLint configuration
+## النشر (Vercel + Postgres)
 
-test
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| الملف | المحتوى |
+|-------|---------|
+| [**`DEPLOY_GUIDE_AR.md`**](./DEPLOY_GUIDE_AR.md) | **المرجع الرئيسي:** خريطة المجلدات، الترتيب، المتغيرات، `vercel.json` |
+| [`VERCEL_MIGRATION_AR.md`](./VERCEL_MIGRATION_AR.md) | يشير إلى الدليل أعلاه |
+| [`backend/VERCEL_DEPLOY.md`](./backend/VERCEL_DEPLOY.md) | تفاصيل الباك إند واستكشاف الأخطاء |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+أمثلة متغيرات محلية: **`central-dashboard/.env.example`** ، **`.env.example`** (الجذر).
+
+## تطبيقات الموبايل (اختياري)
+
+مجلدات `teacher-app/` و`student_app/` — مشاريع منفصلة عن نشر الويب.
+
+## التطوير المحلي
+
+```bash
+# واجهة المدرسة
+npm install && npm run dev
+
+# الباك إند (يتطلب Bun أو بيئة متوافقة + .env)
+cd backend && bun install && bun run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+ضع `DATABASE_URL` و`JWT_SECRET` في `backend/.env` (لا ترفع `.env` إلى Git).

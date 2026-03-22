@@ -1,5 +1,9 @@
 # نشر الـ Backend على Vercel
 
+**الدليل الشامل لكل المشروع (داشبورد المدرسة + المركزية + API):** [`../DEPLOY_GUIDE_AR.md`](../DEPLOY_GUIDE_AR.md)
+
+---
+
 ## المتطلبات في لوحة Vercel
 
 1. **New Project** → اربط مستودع GitHub نفسه.
