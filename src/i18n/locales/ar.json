@@ -1,0 +1,1199 @@
+{
+  "common": {
+    "dashboard": "لوحة التحكم",
+    "teachers": "المعلمون",
+    "students": "الطلاب",
+    "stages": "المراحل",
+    "subjects": "المواد",
+    "exams": "الامتحانات",
+    "posts": "المنشورات",
+    "chats": "المحادثات",
+    "grades": "الدرجات",
+    "activationKeys": "مفاتيح التفعيل",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "language": "اللغة",
+    "english": "English",
+    "arabic": "العربية",
+    "yes": "نعم",
+    "no": "لا",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  },
+  "home": {
+    "title": "مرحباً بك في نظام إدارة المدرسة",
+    "subtitle": "إدارة معلمي وطلاب مدرستك بكفاءة.",
+    "copySchoolCode": "رمز المدرسة",
+    "schoolCodeCopied": "تم نسخ رمز المدرسة \"{{code}}\" إلى الحافظة!",
+    "schoolCodeError": "رمز المدرسة غير متوفر. يرجى تسجيل الخروج وتسجيل الدخول مرة أخرى.",
+    "loginRequired": "تسجيل الدخول مطلوب",
+    "statistics": {
+      "totalStudents": "إجمالي الطلاب",
+      "totalTeachers": "إجمالي المعلمين",
+      "totalSubjects": "إجمالي المواد",
+      "totalStages": "إجمالي المراحل"
+    },
+    "charts": {
+      "studentGrowthTrend": "اتجاه نمو الطلاب",
+      "studentAgeDistribution": "توزيع أعمار الطلاب",
+      "genderDistribution": "توزيع الجنس",
+      "studentsPerStage": "الطلاب لكل مرحلة"
+    },
+    "upcomingExams": {
+      "title": "الامتحانات القادمة (الأيام السبعة القادمة)",
+      "viewAll": "عرض جميع الامتحانات",
+      "noExams": "لا توجد امتحانات في الأيام السبعة القادمة",
+      "subject": "المادة",
+      "teacher": "المعلم",
+      "date": "التاريخ"
+    },
+    "stageSchedules": {
+      "title": "الوصول السريع لجداول المراحل",
+      "schedule": "الجدول",
+      "students": "طلاب"
+    },
+    "months": {
+      "jan": "يناير",
+      "feb": "فبراير",
+      "mar": "مارس",
+      "apr": "أبريل",
+      "may": "مايو",
+      "jun": "يونيو",
+      "jul": "يوليو",
+      "aug": "أغسطس",
+      "sep": "سبتمبر",
+      "oct": "أكتوبر",
+      "nov": "نوفمبر",
+      "dec": "ديسمبر"
+    },
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "years": "سنة"
+  },
+  "teachers": {
+    "title": "المعلمون",
+    "totalTeachers": "إجمالي المعلمين",
+    "searchPlaceholder": "البحث عن المعلمين",
+    "addTeacher": "إضافة معلم",
+    "table": {
+      "name": "الاسم",
+      "age": "العمر",
+      "phoneNumber": "رقم الهاتف",
+      "gender": "الجنس",
+      "stages": "المراحل",
+      "subjects": "المواد",
+      "actions": "الإجراءات",
+      "schedule": "الجدول",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "male": "ذكر",
+      "female": "أنثى",
+      "notAvailable": "غير متوفر"
+    },
+    "edit": {
+      "title": "تعديل المعلم",
+      "nameLabel": "الاسم",
+      "nameRequired": "يرجى إدخال اسم المعلم",
+      "ageLabel": "العمر",
+      "ageValidation": "يجب أن يكون العمر بين 18 و 100",
+      "phoneLabel": "رقم الهاتف",
+      "phoneRequired": "يرجى إدخال رقم الهاتف",
+      "genderLabel": "الجنس",
+      "genderPlaceholder": "اختر الجنس",
+      "birthdateLabel": "تاريخ الميلاد",
+      "stagesLabel": "المراحل",
+      "stagesRequired": "يرجى اختيار مرحلة واحدة على الأقل",
+      "stagesPlaceholder": "اختر المراحل",
+      "subjectsLabel": "المواد",
+      "subjectsRequired": "يرجى اختيار مادة واحدة على الأقل",
+      "subjectsPlaceholder": "اختر المواد",
+      "updateButton": "تحديث المعلم",
+      "cancelButton": "إلغاء"
+    },
+    "delete": {
+      "title": "حذف المعلم",
+      "confirmMessage": "هل أنت متأكد من حذف {{name}}؟",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "messages": {
+      "deleteSuccess": "تم حذف المعلم {{name}} بنجاح",
+      "deleteFailed": "فشل في حذف المعلم",
+      "updateSuccess": "تم تحديث المعلم بنجاح",
+      "updateFailed": "فشل في تحديث المعلم"
+    },
+    "schedule": {
+      "title": "جدول المعلم",
+      "day": "اليوم",
+      "period1": "الحصة الأولى",
+      "period2": "الحصة الثانية",
+      "period3": "الحصة الثالثة",
+      "period4": "الحصة الرابعة",
+      "period5": "الحصة الخامسة",
+      "period6": "الحصة السادسة",
+      "days": {
+        "Monday": "الإثنين",
+        "Tuesday": "الثلاثاء",
+        "Wednesday": "الأربعاء",
+        "Thursday": "الخميس",
+        "Friday": "الجمعة",
+        "Saturday": "السبت",
+        "Sunday": "الأحد"
+      },
+      "errorLoading": "خطأ في تحميل جدول المعلم"
+    },
+    "errors": {
+      "loading": "خطأ في تحميل المعلمين"
+    },
+    "add": {
+      "title": "إضافة معلم جديد",
+      "form": {
+        "nameLabel": "الاسم الكامل",
+        "namePlaceholder": "أدخل الاسم الكامل",
+        "nameRequired": "يرجى إدخال اسم المعلم",
+        "ageLabel": "العمر",
+        "agePlaceholder": "أدخل العمر",
+        "ageRequired": "يرجى إدخال العمر",
+        "ageValidation": "يجب أن يكون العمر بين 18 و 80",
+        "birthdateLabel": "تاريخ الميلاد",
+        "birthdatePlaceholder": "اختر تاريخ الميلاد",
+        "genderLabel": "الجنس",
+        "genderPlaceholder": "اختر الجنس",
+        "phoneLabel": "رقم الهاتف",
+        "phonePlaceholder": "أدخل رقم الهاتف",
+        "phoneRequired": "يرجى إدخال رقم الهاتف",
+        "phoneValidation": "يرجى إدخال رقم هاتف صحيح",
+        "stagesLabel": "مراحل التدريس",
+        "stagesPlaceholder": "اختر مراحل التدريس",
+        "stagesRequired": "يرجى اختيار مرحلة واحدة على الأقل",
+        "subjectsLabel": "مواد التدريس",
+        "subjectsPlaceholder": "اختر مواد التدريس",
+        "subjectsRequired": "يرجى اختيار مادة واحدة على الأقل",
+        "passwordLabel": "كلمة المرور",
+        "passwordPlaceholder": "أدخل كلمة المرور",
+        "passwordRequired": "يرجى إدخال كلمة المرور",
+        "passwordMinLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+        "generatePassword": "توليد"
+      },
+      "gender": {
+        "male": "ذكر",
+        "female": "أنثى"
+      },
+      "buttons": {
+        "addTeacher": "إضافة معلم",
+        "cancel": "إلغاء"
+      },
+      "messages": {
+        "passwordGenerated": "تم توليد وملء كلمة المرور!",
+        "addSuccess": "تم إضافة المعلم بنجاح!",
+        "addFailed": "فشل في إضافة المعلم. يرجى المحاولة مرة أخرى."
+      }
+    }
+  },
+  "students": {
+    "title": "الطلاب",
+    "totalStudents": "إجمالي الطلاب",
+    "searchPlaceholder": "البحث عن الطلاب",
+    "addStudent": "إضافة طالب",
+    "charts": {
+      "ageDistribution": "توزيع أعمار الطلاب",
+      "growthTrend": "اتجاه نمو الطلاب"
+    },
+    "table": {
+      "name": "الاسم",
+      "phoneNumber": "رقم الهاتف",
+      "age": "العمر",
+      "stage": "المرحلة",
+      "code": "الرمز",
+      "activationKey": "مفتاح التفعيل",
+      "actions": "الإجراءات",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "noKey": "لا يوجد مفتاح",
+      "active": "نشط",
+      "used": "مُستخدم",
+      "expired": "منتهي الصلاحية",
+      "codeCopied": "تم نسخ الرمز إلى الحافظة!"
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "activeFilters": "{{count}} نشط",
+      "stage": "المرحلة",
+      "allStages": "جميع المراحل",
+      "gender": "الجنس",
+      "allGenders": "جميع الأجناس",
+      "male": "ذكر",
+      "female": "أنثى",
+      "ageRange": "نطاق العمر",
+      "minAge": "الحد الأدنى",
+      "maxAge": "الحد الأقصى",
+      "keyStatus": "حالة المفتاح",
+      "allStatuses": "جميع الحالات",
+      "clearFilters": "مسح الفلاتر"
+    },
+    "edit": {
+      "title": "تعديل الطالب",
+      "firstNameLabel": "الاسم الأول",
+      "firstNamePlaceholder": "أدخل الاسم الأول",
+      "firstNameRequired": "يرجى إدخال الاسم الأول",
+      "secondNameLabel": "الاسم الثاني",
+      "secondNamePlaceholder": "أدخل الاسم الثاني",
+      "secondNameRequired": "يرجى إدخال الاسم الثاني",
+      "thirdNameLabel": "الاسم الثالث",
+      "thirdNamePlaceholder": "أدخل الاسم الثالث",
+      "thirdNameRequired": "يرجى إدخال الاسم الثالث",
+      "fourthNameLabel": "الاسم الرابع",
+      "fourthNamePlaceholder": "أدخل الاسم الرابع",
+      "fourthNameRequired": "يرجى إدخال الاسم الرابع",
+      "birthdateLabel": "تاريخ الميلاد",
+      "birthdatePlaceholder": "اختر تاريخ الميلاد",
+      "birthdateRequired": "يرجى اختيار تاريخ الميلاد",
+      "genderLabel": "الجنس",
+      "genderPlaceholder": "اختر الجنس",
+      "genderRequired": "يرجى اختيار الجنس",
+      "phoneLabel": "رقم الهاتف",
+      "phonePlaceholder": "أدخل رقم الهاتف",
+      "phoneRequired": "يرجى إدخال رقم الهاتف",
+      "phoneValidation": "يرجى إدخال رقم هاتف صحيح",
+      "stageLabel": "المرحلة",
+      "stagePlaceholder": "اختر المرحلة",
+      "stageRequired": "يرجى اختيار المرحلة",
+      "updateButton": "تحديث الطالب",
+      "cancelButton": "إلغاء"
+    },
+    "delete": {
+      "title": "حذف الطالب",
+      "confirmMessage": "هل أنت متأكد من حذف {{name}}؟",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "activationKey": {
+      "updateTitle": "تحديث مفتاح التفعيل",
+      "currentKeyStatus": "حالة المفتاح الحالي",
+      "selectDescription": "اختر مفتاح تفعيل نشط جديد لتعيينه لهذا الطالب.",
+      "newKeyLabel": "مفتاح التفعيل الجديد",
+      "newKeyPlaceholder": "اختر مفتاح التفعيل",
+      "newKeyRequired": "يرجى اختيار مفتاح تفعيل!",
+      "noKeysAvailable": "لا توجد مفاتيح تفعيل متاحة. يرجى الاتصال بالمسؤول.",
+      "selectKeyHelp": "اختر مفتاح تفعيل غير مستخدم لهذا الطالب.",
+      "updateButton": "تحديث المفتاح",
+      "updateKeyTooltip": "انقر لتحديث مفتاح التفعيل",
+      "expires": "ينتهي في"
+    },
+    "messages": {
+      "deleteSuccess": "🗑️ تم حذف الطالب \"{{name}}\" بنجاح",
+      "deleteFailed": "❌ فشل في حذف الطالب \"{{name}}\". يرجى المحاولة مرة أخرى.",
+      "updateSuccess": "✅ تم تحديث الطالب \"{{name}}\" بنجاح!",
+      "updateFailed": "❌ فشل في تحديث الطالب \"{{name}}\". يرجى المحاولة مرة أخرى.",
+      "activationKeyUpdateSuccess": "تم تحديث مفتاح التفعيل بنجاح",
+      "activationKeyUpdateFailed": "فشل في تحديث مفتاح التفعيل"
+    },
+    "add": {
+      "title": "إضافة طالب جديد",
+      "form": {
+        "firstNameLabel": "الاسم الأول",
+        "firstNamePlaceholder": "أدخل الاسم الأول",
+        "firstNameRequired": "يرجى إدخال الاسم الأول",
+        "secondNameLabel": "الاسم الثاني",
+        "secondNamePlaceholder": "أدخل الاسم الثاني",
+        "secondNameRequired": "يرجى إدخال الاسم الثاني",
+        "thirdNameLabel": "الاسم الثالث",
+        "thirdNamePlaceholder": "أدخل الاسم الثالث",
+        "thirdNameRequired": "يرجى إدخال الاسم الثالث",
+        "fourthNameLabel": "الاسم الرابع",
+        "fourthNamePlaceholder": "أدخل الاسم الرابع",
+        "fourthNameRequired": "يرجى إدخال الاسم الرابع",
+        "birthdateLabel": "تاريخ الميلاد",
+        "birthdatePlaceholder": "اختر تاريخ الميلاد",
+        "birthdateRequired": "يرجى اختيار تاريخ الميلاد",
+        "genderLabel": "الجنس",
+        "genderPlaceholder": "اختر الجنس",
+        "genderRequired": "يرجى اختيار الجنس",
+        "phoneLabel": "رقم الهاتف",
+        "phonePlaceholder": "أدخل رقم الهاتف",
+        "phoneRequired": "يرجى إدخال رقم الهاتف",
+        "phoneValidation": "يرجى إدخال رقم هاتف صحيح",
+        "passwordLabel": "كلمة المرور",
+        "passwordPlaceholder": "أدخل كلمة المرور",
+        "passwordRequired": "يرجى إدخال كلمة المرور",
+        "passwordMinLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+        "confirmPasswordLabel": "تأكيد كلمة المرور",
+        "confirmPasswordPlaceholder": "تأكيد كلمة المرور",
+        "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+        "passwordMismatch": "كلمات المرور غير متطابقة!",
+        "stageLabel": "المرحلة",
+        "stagePlaceholder": "اختر المرحلة",
+        "stageRequired": "يرجى اختيار المرحلة",
+        "activationKeyLabel": "مفتاح التفعيل",
+        "activationKeyPlaceholder": "اختر مفتاح التفعيل",
+        "activationKeyRequired": "يرجى اختيار مفتاح تفعيل!",
+        "activationKeyHelp": "اختر مفتاح تفعيل غير مستخدم لإنشاء هذا الطالب.",
+        "noActivationKeys": "لا توجد مفاتيح تفعيل متاحة. يرجى الاتصال بالمسؤول.",
+        "generatePassword": "توليد"
+      },
+      "gender": {
+        "male": "ذكر",
+        "female": "أنثى"
+      },
+      "buttons": {
+        "addStudent": "إضافة طالب",
+        "cancel": "إلغاء"
+      },
+      "messages": {
+        "passwordGenerated": "تم توليد وملء كلمة المرور!",
+        "nameFieldsRequired": "جميع حقول الاسم مطلوبة",
+        "birthdateRequired": "تاريخ الميلاد مطلوب",
+        "stageRequired": "يرجى اختيار مرحلة",
+        "activationKeyRequired": "يرجى اختيار مفتاح تفعيل",
+        "invalidAge": "عمر غير صحيح محسوب: {{age}}. يرجى التحقق من تاريخ الميلاد.",
+        "unusualAge": "العمر {{age}} خارج النطاق المعتاد (5-25). يرجى التحقق من تاريخ الميلاد.",
+        "formValidationFailed": "يرجى التحقق من جميع الحقول المطلوبة",
+        "addSuccess": "🎉 تم إضافة الطالب \"{{name}}\" بنجاح برمز: {{code}}",
+        "addFailed": "❌ {{message}}"
+      }
+    },
+    "details": {
+      "title": "تفاصيل الطالب",
+      "loading": "جاري تحميل تفاصيل الطالب...",
+      "notFound": "الطالب غير موجود",
+      "info": {
+        "age": "العمر",
+        "stage": "المرحلة",
+        "phoneNumber": "رقم الهاتف",
+        "studentCode": "رمز الطالب"
+      },
+      "attendance": {
+        "calendarTitle": "تقويم الحضور",
+        "attendanceFor": "الحضور في {{date}} ({{day}})",
+        "markAttendance": "تسجيل الحضور",
+        "noSubjects": "لا توجد مواد مجدولة في {{day}}",
+        "checkSchedule": "يرجى التحقق من جدول المرحلة أو اختيار يوم مختلف.",
+        "loadingSchedule": "جاري تحميل الجدول...",
+        "table": {
+          "subject": "المادة",
+          "status": "الحالة",
+          "markedAt": "تم التسجيل في",
+          "unknownSubject": "مادة غير معروفة",
+          "notMarked": "لم يتم التسجيل"
+        },
+        "modal": {
+          "title": "تسجيل الحضور",
+          "date": "التاريخ",
+          "student": "الطالب",
+          "subject": "المادة",
+          "subjectPlaceholder": "اختر مادة",
+          "status": "الحالة",
+          "present": "حاضر",
+          "absent": "غائب"
+        },
+        "messages": {
+          "selectSubject": "يرجى اختيار مادة",
+          "markSuccess": "تم تسجيل الحضور كـ {{status}}",
+          "markFailed": "فشل في تسجيل الحضور",
+          "fetchFailed": "فشل في جلب بيانات الحضور"
+        }
+      }
+    },
+    "errors": {
+      "loading": "خطأ في تحميل الطلاب",
+      "fetchStudentFailed": "فشل في جلب بيانات الطالب"
+    }
+  },
+  "stages": {
+    "title": "المراحل",
+    "searchPlaceholder": "البحث عن المراحل",
+    "addStage": "إضافة مرحلة",
+    "charts": {
+      "studentsAndSubjects": "الطلاب والمواد لكل مرحلة"
+    },
+    "table": {
+      "stageName": "اسم المرحلة",
+      "numberOfStudents": "عدد الطلاب",
+      "numberOfTeachers": "عدد المعلمين",
+      "numberOfSubjects": "عدد المواد",
+      "actions": "الإجراءات",
+      "viewSchedule": "عرض الجدول",
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "edit": {
+      "title": "تعديل المرحلة",
+      "stageNameLabel": "اسم المرحلة",
+      "stageNameRequired": "يرجى إدخال اسم المرحلة",
+      "updateButton": "تحديث المرحلة",
+      "cancelButton": "إلغاء"
+    },
+    "delete": {
+      "title": "حذف المرحلة",
+      "confirmMessage": "هل أنت متأكد من حذف {{name}}؟ سيؤدي ذلك أيضاً إلى حذف جميع الطلاب والمواد في هذه المرحلة.",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "messages": {
+      "deleteSuccess": "تم حذف المرحلة {{name}} بنجاح",
+      "deleteFailed": "فشل في حذف المرحلة",
+      "updateSuccess": "تم تحديث المرحلة بنجاح",
+      "updateFailed": "فشل في تحديث المرحلة. يرجى المحاولة مرة أخرى.",
+      "stageNameExists": "مرحلة بهذا الاسم موجودة بالفعل. يرجى اختيار اسم مختلف."
+    },
+    "add": {
+      "title": "إضافة مرحلة جديدة",
+      "form": {
+        "stageNameLabel": "اسم المرحلة",
+        "stageNamePlaceholder": "أدخل اسم المرحلة (مثل: المرحلة الأولى، الصف السابع، إلخ.)",
+        "stageNameRequired": "يرجى إدخال اسم المرحلة",
+        "stageNameMinLength": "يجب أن يكون اسم المرحلة حرفين على الأقل",
+        "stageNameMaxLength": "يجب ألا يتجاوز اسم المرحلة 50 حرفاً",
+        "stageNameWhitespace": "لا يمكن أن يكون اسم المرحلة فارغاً أو يحتوي على مسافات فقط"
+      },
+      "buttons": {
+        "addStage": "إضافة مرحلة",
+        "cancel": "إلغاء"
+      },
+      "messages": {
+        "addSuccess": "تم إضافة المرحلة بنجاح!",
+        "addFailed": "فشل في إضافة المرحلة. يرجى المحاولة مرة أخرى."
+      },
+      "errors": {
+        "validationError": "خطأ في التحقق"
+      }
+    },
+    "details": {
+      "title": "تفاصيل {{stageName}}",
+      "loading": "جاري تحميل تفاصيل المرحلة...",
+      "notFound": "المرحلة غير موجودة",
+      "students": "الطلاب",
+      "attendance": {
+        "title": "الحضور - {{date}} ({{day}})",
+        "initializeButton": "تهيئة الحضور",
+        "initializeButtonInitialized": "تم تهيئة الحضور ✓",
+        "bulkMark": "تسجيل جماعي",
+        "searchStudents": "البحث عن الطلاب",
+        "stats": {
+          "present": "حاضر",
+          "absent": "غائب",
+          "presentRate": "{{rate}}% حاضر"
+        },
+        "table": {
+          "studentName": "اسم الطالب"
+        },
+        "modal": {
+          "title": "تسجيل الحضور الجماعي",
+          "date": "التاريخ",
+          "selectedStudents": "الطلاب المحددون",
+          "studentsCount": "{{count}} طلاب",
+          "subject": "المادة",
+          "subjectPlaceholder": "اختر مادة",
+          "status": "الحالة"
+        },
+        "messages": {
+          "initializeLoading": "جاري إعداد الحضور لـ {{stageName}} في {{date}}...",
+          "initializeSuccess": "✅ تم تهيئة الحضور بنجاح! تم إنشاء {{count}} سجل لـ {{stageName}} في {{date}}. جميع الطلاب مسجلون كغائبين افتراضياً - يمكنك الآن تسجيلهم كحاضرين.",
+          "initializeAlreadyExists": "📋 الحضور موجود بالفعل لـ {{stageName}} في {{date}}. يمكنك تحديث حضور الطلاب الفردي باستخدام أزرار التبديل.",
+          "initializeFailed": "❌ فشل في تهيئة الحضور لـ {{date}}: {{error}}",
+          "bulkMarkSuccess": "تم تسجيل الحضور كـ {{status}} لـ {{count}} طلاب",
+          "bulkMarkFailed": "فشل في تسجيل الحضور",
+          "individualUpdateSuccess": "تم تحديث الحضور إلى {{status}}",
+          "individualUpdateFailed": "فشل في تحديث الحضور",
+          "selectStudentsAndSubject": "يرجى اختيار الطلاب ومادة"
+        },
+        "alerts": {
+          "noSubjectsScheduled": "لا توجد مواد مجدولة لـ {{day}}",
+          "checkSchedule": "يرجى التحقق من جدول المرحلة أو اختيار يوم مختلف.",
+          "loadingSchedule": "جاري تحميل الجدول..."
+        }
+      }
+    },
+    "schedule": {
+      "title": "جدول المرحلة",
+      "clickToEdit": "انقر على أي خلية لإضافة أو تعديل عنصر في الجدول",
+      "day": "اليوم",
+      "periods": {
+        "period1": "الحصة الأولى (8:00-9:00)",
+        "period2": "الحصة الثانية (9:00-10:00)",
+        "period3": "الحصة الثالثة (10:00-11:00)",
+        "period4": "الحصة الرابعة (11:00-12:00)",
+        "period5": "الحصة الخامسة (1:00-2:00)",
+        "period6": "الحصة السادسة (2:00-3:00)"
+      },
+      "days": {
+        "Monday": "الإثنين",
+        "Tuesday": "الثلاثاء",
+        "Wednesday": "الأربعاء",
+        "Thursday": "الخميس",
+        "Friday": "الجمعة",
+        "Saturday": "السبت",
+        "Sunday": "الأحد"
+      },
+      "cell": {
+        "clickToAdd": "انقر للإضافة"
+      },
+      "modal": {
+        "editTitle": "تعديل الجدول",
+        "addTitle": "إضافة للجدول",
+        "subjectLabel": "المادة",
+        "subjectPlaceholder": "اختر مادة",
+        "subjectRequired": "يرجى اختيار مادة",
+        "teacherLabel": "المعلم",
+        "teacherPlaceholder": "اختر معلم",
+        "teacherRequired": "يرجى اختيار معلم",
+        "deleteButton": "حذف",
+        "deleteConfirmTitle": "حذف الجدول",
+        "deleteConfirmMessage": "هل أنت متأكد من إزالة هذه المادة من الجدول؟"
+      },
+      "messages": {
+        "updateSuccess": "تم تحديث الجدول بنجاح!",
+        "createSuccess": "تم إنشاء الجدول بنجاح!",
+        "saveFailed": "فشل في حفظ الجدول. يرجى المحاولة مرة أخرى.",
+        "deleteSuccess": "تم حذف الجدول بنجاح!",
+        "deleteFailed": "فشل في حذف الجدول. يرجى المحاولة مرة أخرى."
+      },
+      "loading": {
+        "schedule": "جاري تحميل الجدول...",
+        "error": "خطأ في تحميل الجدول",
+        "errorDescription": "تعذر تحميل بيانات الجدول. يرجى المحاولة مرة أخرى."
+      },
+      "alerts": {
+        "noStage": "لم يتم اختيار مرحلة",
+        "noStageDescription": "يرجى اختيار مرحلة لعرض جدولها."
+      }
+    },
+    "errors": {
+      "loading": "خطأ في تحميل المراحل"
+    }
+  },
+  "subjects": {
+    "title": "المواد",
+    "searchPlaceholder": "البحث عن المواد",
+    "addSubject": "إضافة مادة",
+    "statistics": {
+      "totalSubjects": "إجمالي المواد",
+      "stagesWithSubjects": "المراحل التي تحتوي على مواد"
+    },
+    "table": {
+      "subjectName": "اسم المادة",
+      "stage": "المرحلة",
+      "teacherCount": "عدد المعلمين",
+      "teachers": "المعلمون",
+      "actions": "الإجراءات",
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "activeFilters": "{{count}} نشط",
+      "stage": "المرحلة",
+      "allStages": "جميع المراحل",
+      "teacherAssignment": "تعيين المعلمين",
+      "allSubjects": "جميع المواد",
+      "withTeachers": "مع معلمين",
+      "withoutTeachers": "بدون معلمين",
+      "teacher": "المعلم",
+      "allTeachers": "جميع المعلمين",
+      "clearFilters": "مسح الفلاتر"
+    },
+    "edit": {
+      "title": "تعديل المادة",
+      "subjectNameLabel": "اسم المادة",
+      "subjectNameRequired": "يرجى إدخال اسم المادة",
+      "stageLabel": "المرحلة",
+      "stageRequired": "يرجى اختيار مرحلة",
+      "stagePlaceholder": "اختر مرحلة",
+      "updateButton": "تحديث المادة",
+      "cancelButton": "إلغاء"
+    },
+    "delete": {
+      "title": "حذف المادة",
+      "confirmMessage": "هل أنت متأكد من حذف {{name}}؟",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "messages": {
+      "deleteSuccess": "تم حذف المادة {{name}} بنجاح",
+      "deleteFailed": "فشل في حذف المادة",
+      "updateSuccess": "تم تحديث المادة بنجاح",
+      "updateFailed": "فشل في تحديث المادة. يرجى المحاولة مرة أخرى.",
+      "subjectNameExists": "مادة بهذا الاسم موجودة بالفعل في المرحلة المحددة. يرجى اختيار اسم مختلف."
+    },
+    "add": {
+      "title": "إضافة مادة جديدة",
+      "form": {
+        "subjectNameLabel": "اسم المادة",
+        "subjectNamePlaceholder": "أدخل اسم المادة (مثل: الرياضيات، العلوم، إلخ.)",
+        "subjectNameRequired": "يرجى إدخال اسم المادة",
+        "subjectNameMinLength": "يجب أن يكون اسم المادة حرفين على الأقل",
+        "subjectNameMaxLength": "يجب ألا يتجاوز اسم المادة 50 حرفاً",
+        "subjectNameWhitespace": "لا يمكن أن يكون اسم المادة فارغاً أو يحتوي على مسافات فقط",
+        "stageLabel": "المرحلة",
+        "stagePlaceholder": "اختر مرحلة",
+        "stageRequired": "يرجى اختيار مرحلة"
+      },
+      "buttons": {
+        "addSubject": "إضافة مادة",
+        "cancel": "إلغاء"
+      },
+      "messages": {
+        "addSuccess": "تم إضافة المادة بنجاح!",
+        "addFailed": "فشل في إضافة المادة. يرجى المحاولة مرة أخرى."
+      },
+      "errors": {
+        "validationError": "خطأ في التحقق"
+      }
+    },
+    "pagination": {
+      "showTotal": "{{start}}-{{end}} من {{total}} عنصر"
+    },
+    "errors": {
+      "loading": "خطأ في تحميل المواد"
+    }
+  },
+  "exams": {
+    "title": "الامتحانات",
+    "searchPlaceholder": "البحث في الامتحانات حسب العنوان أو المادة أو المعلم أو المرحلة أو الفصل",
+    "addExam": "إضافة امتحان",
+    "calendar": {
+      "title": "اختر تاريخاً لتصفية الامتحانات",
+      "showingExamsFor": "عرض امتحانات يوم: {{date}}",
+      "examCount": "{{count}} امتحان",
+      "clearDateFilter": "إلغاء تصفية التاريخ"
+    },
+    "table": {
+      "title": "العنوان",
+      "subject": "المادة",
+      "teacher": "المعلم",
+      "stage": "المرحلة",
+      "class": "الفصل",
+      "examDate": "تاريخ الامتحان",
+      "actions": "الإجراءات",
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "edit": {
+      "title": "تعديل الامتحان",
+      "examTitleLabel": "العنوان",
+      "examTitleRequired": "يرجى إدخال عنوان الامتحان",
+      "descriptionLabel": "الوصف",
+      "examDateLabel": "تاريخ ووقت الامتحان",
+      "examDateRequired": "يرجى اختيار تاريخ ووقت الامتحان",
+      "classLabel": "الفصل",
+      "classRequired": "يرجى إدخال رقم الفصل",
+      "stageLabel": "المرحلة",
+      "stageRequired": "يرجى اختيار مرحلة",
+      "stagePlaceholder": "اختر مرحلة",
+      "subjectLabel": "المادة",
+      "subjectRequired": "يرجى اختيار مادة",
+      "subjectPlaceholder": "اختر مادة",
+      "teacherLabel": "المعلم",
+      "teacherRequired": "يرجى اختيار معلم",
+      "teacherPlaceholder": "اختر معلم",
+      "updateButton": "تحديث الامتحان",
+      "cancelButton": "إلغاء"
+    },
+    "delete": {
+      "title": "حذف الامتحان",
+      "confirmMessage": "هل أنت متأكد من حذف \"{{title}}\"؟",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "messages": {
+      "deleteSuccess": "تم حذف الامتحان \"{{title}}\" بنجاح",
+      "deleteFailed": "فشل في حذف الامتحان",
+      "updateSuccess": "تم تحديث الامتحان بنجاح",
+      "updateFailed": "فشل في تحديث الامتحان"
+    },
+    "add": {
+      "title": "إضافة امتحان جديد",
+      "form": {
+        "examTitleLabel": "عنوان الامتحان",
+        "examTitlePlaceholder": "أدخل عنوان الامتحان",
+        "examTitleRequired": "يرجى إدخال عنوان الامتحان",
+        "descriptionLabel": "الوصف",
+        "descriptionPlaceholder": "أدخل وصف الامتحان (اختياري)",
+        "examDateLabel": "تاريخ ووقت الامتحان",
+        "examDatePlaceholder": "اختر تاريخ ووقت الامتحان",
+        "examDateRequired": "يرجى اختيار تاريخ ووقت الامتحان",
+        "classLabel": "الفصل",
+        "classPlaceholder": "أدخل رقم الفصل (مثل: فصل أ، غرفة 101)",
+        "classRequired": "يرجى إدخال رقم الفصل",
+        "stageLabel": "المرحلة",
+        "stagePlaceholder": "اختر مرحلة",
+        "stageRequired": "يرجى اختيار مرحلة",
+        "subjectLabel": "المادة",
+        "subjectPlaceholder": "اختر مادة",
+        "subjectRequired": "يرجى اختيار مادة",
+        "teacherLabel": "المعلم",
+        "teacherPlaceholder": "اختر معلم",
+        "teacherRequired": "يرجى اختيار معلم"
+      },
+      "buttons": {
+        "createExam": "إنشاء امتحان",
+        "cancel": "إلغاء"
+      },
+      "messages": {
+        "createSuccess": "تم إنشاء الامتحان بنجاح",
+        "createFailed": "فشل في إنشاء الامتحان"
+      }
+    },
+    "errors": {
+      "loading": "خطأ في تحميل الامتحانات"
+    }
+  },
+  "posts": {
+    "title": "منشورات المعلمين",
+    "subtitle": "عرض واستكشاف المنشورات المشاركة من قبل المعلمين عبر جميع المراحل والمواد",
+    "search": {
+      "placeholder": "البحث في المنشورات أو المحتوى أو اسم المعلم..."
+    },
+    "filters": {
+      "stage": "تصفية حسب المرحلة",
+      "teacher": "تصفية حسب المعلم",
+      "clearFilters": "مسح الفلاتر",
+      "totalPosts": "إجمالي المنشورات"
+    },
+    "post": {
+      "timeAgo": {
+        "minutesAgo": "منذ {{minutes}} دقيقة",
+        "hoursAgo": "منذ {{hours}} ساعة",
+        "daysAgo": "منذ {{days}} يوم"
+      },
+      "interactions": {
+        "like": "إعجاب",
+        "likes": "إعجاب",
+        "comment": "تعليق",
+        "comments": "تعليق",
+        "likedBy": "أعجب بها {{name}}",
+        "likedByOthers": "أعجب بها {{name}} و{{count}} آخرين",
+        "viewComments": "عرض التعليقات"
+      },
+      "delete": "حذف المنشور"
+    },
+    "modal": {
+      "postBy": "بواسطة {{name}}",
+      "commentsTitle": "التعليقات ({{count}})",
+      "noComments": "لا توجد تعليقات بعد",
+      "noCommentsDescription": "كن أول من يترك تعليقاً!"
+    },
+    "pagination": {
+      "showTotal": "{{start}}-{{end}} من {{total}} منشور"
+    },
+    "empty": {
+      "noPosts": "لا توجد منشورات",
+      "noPostsDescription": "لا توجد منشورات تطابق معايير البحث والتصفية الحالية."
+    },
+    "loading": {
+      "fetchingPosts": "جاري تحميل المنشورات..."
+    },
+    "errors": {
+      "fetchPostsFailed": "فشل في جلب المنشورات",
+      "fetchStagesFailed": "فشل في جلب المراحل",
+      "fetchTeachersFailed": "فشل في جلب المعلمين"
+    },
+    "delete": {
+      "confirmTitle": "حذف المنشور",
+      "confirmMessage": "هل أنت متأكد من حذف هذا المنشور؟ لا يمكن التراجع عن هذا الإجراء.",
+      "confirmButton": "حذف",
+      "cancelButton": "إلغاء",
+      "warning": "⚠️ سيؤدي هذا أيضاً إلى حذف جميع الإعجابات والتعليقات المرتبطة بهذا المنشور.",
+      "success": "تم حذف المنشور",
+      "successMessage": "تم حذف المنشور بنجاح.",
+      "error": "فشل الحذف",
+      "errorMessage": "فشل في حذف المنشور. يرجى المحاولة مرة أخرى."
+    }
+  },
+  "chats": {
+    "title": "محادثات المدرسة",
+    "subtitle": "تحدث مع المعلمين والطلاب من مدرستك",
+    "sidebar": {
+      "newChat": "محادثة جديدة",
+      "noChats": "لا توجد محادثات بعد",
+      "noMessages": "لا توجد رسائل بعد"
+    },
+    "participants": {
+      "teacher": "معلم",
+      "student": "طالب",
+      "teacherInfo": "معلم • {{phone}}",
+      "studentInfo": "طالب • الرمز: {{code}}"
+    },
+    "messages": {
+      "typeMessage": "اكتب رسالة...",
+      "send": "إرسال",
+      "noMessagesYet": "لا توجد رسائل بعد",
+      "selectChat": "اختر محادثة لبدء المراسلة",
+      "fetchChatsError": "فشل في جلب المحادثات",
+      "fetchMessagesError": "فشل في جلب الرسائل",
+      "sendMessageError": "فشل في إرسال الرسالة",
+      "startChatError": "فشل في بدء المحادثة",
+      "chatStartedSuccess": "تم بدء المحادثة بنجاح"
+    },
+    "newChatModal": {
+      "title": "بدء محادثة جديدة",
+      "placeholder": "اختر معلماً أو طالباً للمحادثة معه",
+      "startChat": "بدء المحادثة",
+      "teacherDetails": "الهاتف: {{phone}} • المواد: {{subjects}}",
+      "studentDetails": "الرمز: {{code}} • المرحلة: {{stage}}",
+      "noPhone": "غير متوفر",
+      "noSubjects": "لا يوجد",
+      "noCode": "غير متوفر",
+      "noStage": "غير متوفر"
+    },
+    "time": {
+      "now": "الآن",
+      "minutesAgo": "منذ {{minutes}} دقيقة",
+      "hoursAgo": "منذ {{hours}} ساعة",
+      "daysAgo": "منذ {{days}} يوم",
+      "timeFormat": "HH:mm"
+    }
+  },
+  "grades": {
+    "title": "درجات الطلاب",
+    "subtitle": "عرض وإدارة الأداء الأكاديمي ودرجات الطلاب",
+    "filters": {
+      "searchPlaceholder": "البحث باسم الطالب أو الرمز أو المرحلة أو المادة",
+      "selectStage": "اختر مرحلة لتصفية الطلاب",
+      "selectStageFilter": "اختر مرحلة لتصفية الطلاب",
+      "selectSubject": "اختر مادة لتصفية الطلاب",
+      "selectSubjectFilter": "اختر مادة لتصفية الطلاب",
+      "clearAll": "مسح الكل",
+      "downloadAll": "تحميل الكل ({{count}})",
+      "filterInfo": "عرض طلاب من {{stage}}",
+      "subjectFilterInfo": "مُرشح لطلاب لديهم درجات في {{subject}}",
+      "combinedFilterInfo": "عرض طلاب من {{stage}} • مُرشح لطلاب لديهم درجات في {{subject}}"
+    },
+    "table": {
+      "headers": {
+        "student": "الطالب",
+        "subjectsWithGrades": "المواد مع الدرجات",
+        "totalGrades": "إجمالي الدرجات",
+        "overallAverage": "المعدل العام",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "subject": "المادة",
+        "subjectAverage": "معدل المادة"
+      },
+      "gradeTypes": {
+        "month1": "الشهر الأول",
+        "month2": "الشهر الثاني",
+        "midExam": "امتحان منتصف الفصل",
+        "month3": "الشهر الثالث",
+        "month4": "الشهر الرابع",
+        "finalExam": "الامتحان النهائي"
+      },
+      "studentInfo": {
+        "code": "الرمز: {{code}}",
+        "stage": "المرحلة: {{stage}}"
+      },
+      "expandedView": {
+        "title": "الدرجات التفصيلية للطالب {{studentName}} - جميع المواد في {{stageName}}",
+        "filteredBy": "مُرشح بواسطة: {{subjectName}}"
+      }
+    },
+    "status": {
+      "passed": "نجح",
+      "failed": "راسب"
+    },
+    "actions": {
+      "download": "تحميل",
+      "edit": "تعديل المرحلة",
+      "addGrade": "إضافة درجة"
+    },
+    "modal": {
+      "editStage": {
+        "title": "تغيير مرحلة الطالب",
+        "studentLabel": "الطالب:",
+        "currentStageLabel": "المرحلة الحالية:",
+        "newStageLabel": "المرحلة الجديدة:",
+        "selectNewStage": "اختر مرحلة جديدة",
+        "updateButton": "تحديث المرحلة",
+        "cancelButton": "إلغاء"
+      },
+      "addGrade": {
+        "title": "إضافة درجة لـ {{student}}",
+        "titleFallback": "إضافة درجة",
+        "subjectLabel": "المادة",
+        "subjectPlaceholder": "اختر المادة",
+        "subjectRequired": "يرجى اختيار المادة",
+        "gradeTypeLabel": "نوع الاختبار",
+        "gradeTypePlaceholder": "اختر نوع الاختبار",
+        "gradeTypeRequired": "يرجى اختيار نوع الاختبار",
+        "gradeValueLabel": "الدرجة",
+        "gradeValuePlaceholder": "أدخل الدرجة (0-100)",
+        "gradeValueRequired": "يرجى إدخال الدرجة",
+        "teacherLabel": "المعلم",
+        "teacherPlaceholder": "اختر المعلم الذي أعطى الدرجة",
+        "teacherRequired": "يرجى اختيار المعلم",
+        "noTeacherAvailable": "لا يوجد معلمون لهذه المادة",
+        "submitButton": "حفظ الدرجة",
+        "cancelButton": "إلغاء"
+      }
+    },
+    "messages": {
+      "fetchGradesError": "فشل في جلب الدرجات",
+      "updateStageSuccess": "تم تحديث مرحلة الطالب بنجاح",
+      "updateStageError": "فشل في تحديث مرحلة الطالب",
+      "selectStageError": "يرجى اختيار مرحلة",
+      "studentNotFound": "الطالب غير موجود",
+      "noDataToDownload": "لا توجد بيانات للتحميل",
+      "generatingPDF": "جاري إنشاء تقرير PDF...",
+      "generatingBulkPDF": "جاري إنشاء تقارير PDF...",
+      "downloadSuccess": "تم تحميل تقرير PDF للطالب {{studentName}}",
+      "downloadError": "فشل في تحميل تقرير PDF",
+      "bulkDownloadSuccess": "تم تحميل تقارير PDF لـ {{count}} طالب",
+      "bulkDownloadError": "فشل في تحميل تقارير PDF",
+      "addGradeSuccess": "تمت إضافة الدرجة بنجاح",
+      "addGradeError": "فشل في إضافة الدرجة. يرجى المحاولة مرة أخرى."
+    },
+    "pagination": {
+      "showTotal": "{{start}}-{{end}} من {{total}} طالب"
+    },
+    "empty": {
+      "noGrades": "لا توجد درجات",
+      "noStudents": "لا يوجد طلاب يطابقون معايير البحث الحالية"
+    }
+  },
+  "activationKeys": {
+    "title": "مفاتيح التفعيل",
+    "subtitle": "إدارة ومراقبة مفاتيح التفعيل لتسجيل الطلاب",
+    "statistics": {
+      "totalKeys": "إجمالي المفاتيح",
+      "activeKeys": "المفاتيح النشطة",
+      "usedKeys": "المفاتيح المُستخدمة",
+      "expiredKeys": "المفاتيح المنتهية الصلاحية"
+    },
+    "table": {
+      "headers": {
+        "activationKey": "مفتاح التفعيل",
+        "status": "الحالة",
+        "usedBy": "مُستخدم من قبل",
+        "usedAt": "تاريخ الاستخدام",
+        "expiresAt": "تاريخ انتهاء الصلاحية",
+        "createdAt": "تاريخ الإنشاء"
+      },
+      "status": {
+        "used": "مُستخدم",
+        "expired": "منتهي الصلاحية",
+        "active": "نشط"
+      },
+      "usedBy": {
+        "notUsed": "غير مُستخدم",
+        "code": "الرمز: {{code}}"
+      }
+    },
+    "filters": {
+      "searchPlaceholder": "البحث بمفتاح التفعيل أو الطالب...",
+      "statusFilter": {
+        "placeholder": "الحالة",
+        "all": "جميع الحالات",
+        "active": "نشط",
+        "used": "مُستخدم",
+        "expired": "منتهي الصلاحية"
+      },
+      "dateRange": {
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية"
+      },
+      "refresh": "تحديث"
+    },
+    "actions": {
+      "copyToClipboard": "نسخ إلى الحافظة",
+      "tryAgain": "حاول مرة أخرى"
+    },
+    "messages": {
+      "keyCopied": "تم نسخ مفتاح التفعيل إلى الحافظة!",
+      "loadError": "فشل في تحميل مفاتيح التفعيل",
+      "unexpectedError": "حدث خطأ غير متوقع"
+    },
+    "pagination": {
+      "showTotal": "{{start}}-{{end}} من {{total}} مفتاح تفعيل"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "systemConfiguration": {
+      "title": "إعدادات النظام",
+      "description": "تكوين الإعدادات على مستوى النظام التي تظهر في تقارير PDF وفي جميع أنحاء التطبيق.",
+      "countryName": "اسم البلد",
+      "countryNamePlaceholder": "أدخل اسم البلد",
+      "countryNameRequired": "يرجى إدخال اسم البلد",
+      "ministryName": "اسم الوزارة",
+      "ministryNamePlaceholder": "أدخل اسم الوزارة",
+      "ministryNameRequired": "يرجى إدخال اسم الوزارة",
+      "schoolName": "اسم المدرسة",
+      "schoolNamePlaceholder": "أدخل اسم المدرسة",
+      "schoolNameRequired": "يرجى إدخال اسم المدرسة",
+      "managerName": "اسم المدير",
+      "managerNamePlaceholder": "أدخل اسم المدير",
+      "managerNameRequired": "يرجى إدخال اسم المدير",
+      "studyYear": "السنة الدراسية",
+      "studyYearPlaceholder": "مثال: 2024-2025",
+      "studyYearRequired": "يرجى إدخال السنة الدراسية",
+      "saveSettings": "حفظ الإعدادات",
+      "updateSuccess": "تم تحديث إعدادات النظام بنجاح",
+      "updateFailed": "فشل في تحديث إعدادات النظام",
+      "loadFailed": "فشل في تحميل إعدادات النظام"
+    },
+    "companyAccess": {
+      "title": "الوصول من الشركة",
+      "activated": "مُفعّل",
+      "notActivated": "غير مُفعّل",
+      "whatIs": "ما هو الوصول من الشركة؟",
+      "description": "يسمح الوصول من الشركة لموظفي الشركة المعتمدين بالوصول إلى لوحة تحكم مدرستك باستخدام رمز وصول آمن، دون الحاجة إلى التحقق عبر WhatsApp في كل مرة.",
+      "disabledWarning": "⚠️ هذه الميزة معطلة حالياً. يمكنك تفعيلها عن طريق التحقق من هويتك عبر WhatsApp.",
+      "enabledSuccess": "✅ يمكن لموظفي الشركة الآن الوصول إلى لوحة التحكم الخاصة بك باستخدام رمز الوصول.",
+      "accessCode": "رمز الوصول",
+      "noAccessCode": "لا يوجد رمز وصول متاح",
+      "status": "الحالة",
+      "activatedEnabled": "مُفعّل ومُمكّن",
+      "deactivated": "غير مُفعّل",
+      "activateButton": "تفعيل الوصول من الشركة",
+      "deactivateButton": "إلغاء تفعيل الوصول من الشركة",
+      "alreadyActivated": "الوصول من الشركة مُفعّل بالفعل! تم تحديث العرض.",
+      "refreshButton": "تحديث الحالة",
+      "refreshSuccess": "تم تحديث الحالة بنجاح!",
+      "refreshFailed": "فشل في تحديث الحالة"
+    },
+    "activationModal": {
+      "title": "تفعيل الوصول من الشركة",
+      "verificationRequired": "التحقق مطلوب",
+      "codeSent": "تم إرسال رمز التحقق المكون من 6 أرقام إلى رقم WhatsApp المسجل لديك",
+      "enterCode": "أدخل رمز التحقق:",
+      "codePlaceholder": "أدخل الرمز المكون من 6 أرقام",
+      "important": "مهم",
+      "importantMessage": "من خلال تفعيل هذه الميزة، تسمح لموظفي الشركة المعتمدين بالوصول إلى لوحة تحكم مدرستك باستخدام رمز الوصول. يمكنك إلغاء التفعيل في أي وقت من الإعدادات.",
+      "cancel": "إلغاء",
+      "activate": "تفعيل",
+      "codeSentSuccess": "تم إرسال رمز التحقق إلى WhatsApp",
+      "sendCodeFailed": "فشل في إرسال رمز التحقق",
+      "invalidCode": "يرجى إدخال رمز صحيح مكون من 6 أرقام",
+      "activateSuccess": "تم تفعيل رمز الوصول بنجاح!",
+      "verifyFailed": "رمز التحقق غير صحيح"
+    },
+    "deactivationModal": {
+      "title": "إلغاء تفعيل الوصول من الشركة؟",
+      "confirmTitle": "تأكيد إلغاء التفعيل",
+      "confirmMessage": "هل أنت متأكد من إلغاء تفعيل الوصول من الشركة؟ لن يتمكن موظفو الشركة من الوصول إلى لوحة التحكم الخاصة بك باستخدام رمز الوصول.",
+      "reactivateNote": "يمكنك إعادة تفعيل هذه الميزة في أي وقت من صفحة الإعدادات.",
+      "deactivate": "إلغاء التفعيل",
+      "deactivateSuccess": "تم إلغاء تفعيل رمز الوصول بنجاح",
+      "deactivateFailed": "فشل في إلغاء تفعيل رمز الوصول"
+    },
+    "backup": {
+      "title": "النسخ الاحتياطي والاستعادة",
+      "backupTitle": "نسخ بيانات النظام احتياطياً",
+      "backupDescription": "تصدير جميع بيانات النظام بما في ذلك المعلمين والطلاب والمراحل والمواد والجداول والامتحانات.",
+      "createBackup": "إنشاء نسخة احتياطية",
+      "backupInfo": "معلومات النسخ الاحتياطي",
+      "backupInfoDescription": "سيتم حفظ ملف النسخ الاحتياطي كملف JSON في موقع التنزيل الافتراضي الخاص بك. يحتوي هذا الملف على جميع بيانات النظام الخاصة بك ويمكن استخدامه لاستعادة نظامك.",
+      "includes": "يتضمن:",
+      "includesTeachersStudents": "المعلمين، الطلاب، المراحل والمواد",
+      "includesSchedulesExams": "الجداول والامتحانات",
+      "includesGradesNotes": "درجات وملاحظات الطلاب",
+      "includesAttendance": "سجلات الحضور",
+      "includesPosts": "منشورات وتعليقات المعلمين",
+      "includesChats": "سجل المحادثات (معلم-طالب وإداري)",
+      "includesActivationKeys": "مفاتيح التفعيل",
+      "includesSystemSettings": "إعدادات النظام",
+      "passwordsSecure": "✓ يتم تصدير كلمات المرور بشكل آمن (مشفرة بالفعل باستخدام bcrypt)",
+      "passwordsNote": "ملاحظة: كلمات المرور المُصدّرة هي تشفير bcrypt (تشفير أحادي الاتجاه) - لا يمكن عكسها إلى نص عادي. يمكن للمستخدمين تسجيل الدخول بكلمات المرور الحالية بعد الاستيراد.",
+      "lastBackup": "آخر نسخة احتياطية",
+      "neverBackedUp": "لم يتم إنشاء نسخة احتياطية",
+      "justNow": "الآن",
+      "minutesAgo": "منذ {{minutes}} دقيقة",
+      "hoursAgo": "منذ {{hours}} ساعة",
+      "daysAgo": "منذ {{days}} يوم",
+      "importTitle": "استيراد بيانات النظام",
+      "importDescription": "استيراد بيانات النظام من ملف نسخ احتياطي تم إنشاؤه مسبقاً.",
+      "selectFile": "اختر ملف النسخ الاحتياطي",
+      "importWarning": "تحذير الاستيراد",
+      "importWarningDescription": "قد يؤدي استيراد البيانات إلى الكتابة فوق السجلات الموجودة. يرجى التأكد من أن لديك نسخة احتياطية حالية قبل المتابعة.",
+      "fetchingData": "جاري جلب بيانات النظام...",
+      "readingFile": "جاري قراءة ملف النسخ الاحتياطي...",
+      "importingData": "جاري استيراد بيانات النسخ الاحتياطي...",
+      "backupSuccess": "تم إنشاء النسخة الاحتياطية بنجاح! تم تصدير {{count}} سجل إلى {{filename}}",
+      "backupFailed": "فشل في إنشاء النسخة الاحتياطية.",
+      "invalidFileFormat": "تنسيق ملف النسخ الاحتياطي غير صحيح",
+      "invalidFileStructure": "بنية ملف النسخ الاحتياطي غير صحيحة",
+      "importSuccess": "اكتمل الاستيراد بنجاح! تم استيراد {{count}} سجل.",
+      "importWithWarnings": "اكتمل الاستيراد مع تحذيرات",
+      "importFailed": "فشل في استيراد البيانات. يرجى التحقق من الملف والمحاولة مرة أخرى.",
+      "backendNotAccessible": "لا يمكن الاتصال بخادم الخلفية. يرجى التأكد من تشغيل الخلفية على المنفذ 3000."
+    }
+  },
+  "login": {
+    "title": "لوحة تحكم المدرسة",
+    "subtitle": "تسجيل الدخول إلى حساب مدرستك",
+    "tabs": {
+      "normalLogin": "تسجيل الدخول العادي",
+      "accessCode": "رمز الوصول"
+    },
+    "normalLogin": {
+      "identifier": "اسم المستخدم أو رقم الهاتف",
+      "identifierRequired": "يرجى إدخال اسم المستخدم أو رقم الهاتف!",
+      "identifierMinLength": "يجب أن يكون اسم المستخدم أو رقم الهاتف 3 أحرف على الأقل!",
+      "password": "كلمة المرور",
+      "passwordRequired": "يرجى إدخال كلمة المرور!",
+      "passwordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل!",
+      "signIn": "تسجيل الدخول",
+      "signingIn": "جاري تسجيل الدخول...",
+      "forgotPassword": "نسيت كلمة المرور؟"
+    },
+    "accessCodeLogin": {
+      "infoTitle": "الوصول من الشركة",
+      "infoDescription": "أدخل رمز الوصول المقدم من شركتك لتسجيل الدخول دون التحقق عبر WhatsApp.",
+      "accessCode": "أدخل رمز الوصول",
+      "accessCodeRequired": "يرجى إدخال رمز الوصول!",
+      "accessCodeMinLength": "يجب أن يكون رمز الوصول 10 أحرف على الأقل!",
+      "signIn": "تسجيل الدخول برمز الوصول",
+      "signingIn": "جاري تسجيل الدخول..."
+    },
+    "forgotPassword": {
+      "title": "إعادة تعيين كلمة المرور",
+      "step1": {
+        "phoneLabel": "رقم الهاتف المسجل",
+        "phonePlaceholder": "مثال: 7712345678",
+        "phoneRequired": "يرجى إدخال رقم هاتفك",
+        "sendCode": "إرسال رمز التحقق"
+      },
+      "step2": {
+        "codeSent": "تم إرسال الرمز إلى:",
+        "codeLabel": "رمز التحقق",
+        "codePlaceholder": "123456",
+        "codeRequired": "أدخل الرمز المكون من 6 أرقام",
+        "newPasswordLabel": "كلمة المرور الجديدة",
+        "newPasswordPlaceholder": "كلمة المرور الجديدة",
+        "newPasswordRequired": "أدخل كلمة المرور الجديدة",
+        "newPasswordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+        "confirmPasswordLabel": "تأكيد كلمة المرور",
+        "confirmPasswordPlaceholder": "تأكيد كلمة المرور",
+        "confirmPasswordRequired": "تأكيد كلمة المرور الجديدة",
+        "resetButton": "إعادة تعيين كلمة المرور",
+        "backButton": "رجوع"
+      }
+    },
+    "mfaVerification": {
+      "title": "أدخل رمز التحقق",
+      "codeSent": "تم إرسال الرمز إلى:",
+      "codeLabel": "رمز التحقق",
+      "codePlaceholder": "123456",
+      "codeRequired": "أدخل الرمز المكون من 6 أرقام",
+      "verifyButton": "التحقق وتسجيل الدخول"
+    },
+    "messages": {
+      "codeSentSuccess": "تم إرسال رمز التحقق إلى WhatsApp",
+      "loginSuccess": "تم تسجيل الدخول بنجاح",
+      "passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول.",
+      "networkError": "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+      "unexpectedResponse": "استجابة غير متوقعة من الخادم",
+      "invalidPhoneNumber": "يرجى إدخال رقم هاتف صحيح",
+      "passwordMismatch": "كلمات المرور غير متطابقة",
+      "codeInvalid": "يجب أن يكون رمز التحقق 6 أرقام",
+      "sendCodeFailed": "فشل في إرسال رمز التحقق",
+      "resetPasswordFailed": "فشل في إعادة تعيين كلمة المرور",
+      "verifyCodeFailed": "فشل في التحقق من الرمز"
+    },
+    "help": {
+      "needHelp": "بحاجة لمساعدة؟ اتصل بمسؤول النظام"
+    }
+  }
+}

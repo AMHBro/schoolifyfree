@@ -1,0 +1,291 @@
+/* Posts Page Styles */
+.posts-card {
+  transition: all 0.3s ease;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.posts-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.posts-card .ant-card-body {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.post-title {
+  margin: 0 0 8px 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #262626 !important;
+  line-height: 1.4 !important;
+}
+
+.post-tags {
+  margin-bottom: 12px;
+}
+
+.post-content {
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.post-actions {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+.post-search-filters {
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.posts-grid {
+  min-height: 400px;
+}
+
+.post-card-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.post-card-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .posts-card {
+    margin-bottom: 16px;
+  }
+
+  .post-title {
+    font-size: 14px !important;
+  }
+
+  .post-search-filters .ant-row {
+    gap: 8px;
+  }
+}
+
+/* Animation for loading */
+.posts-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Custom tag styles */
+.ant-tag {
+  border-radius: 12px;
+  font-size: 11px;
+  margin: 0;
+}
+
+/* Post meta styles */
+.post-meta {
+  font-size: 12px;
+  color: #8c8c8c;
+}
+
+.post-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.post-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #8c8c8c;
+}
+
+.post-stat-item .anticon {
+  font-size: 14px;
+}
+
+/* Gradient background for cards */
+.posts-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1890ff, #52c41a);
+  border-radius: 12px 12px 0 0;
+}
+
+.posts-card {
+  position: relative;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* RTL Layout - Force main sidebar to the right using absolute positioning */
+/* Only apply to root level layout, not nested ones like in Chats */
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider {
+  position: relative !important;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 200 !important;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider + .ant-layout {
+  margin-right: 200px !important;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider-collapsed + .ant-layout {
+  margin-right: 80px !important;
+  margin-left: 0 !important;
+}
+
+/* Ensure collapsed sider trigger appears correctly in RTL */
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider .ant-layout-sider-trigger {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider-zero-width-trigger {
+  right: auto !important;
+  left: -36px !important;
+}
+
+/* Handle different sidebar widths dynamically in RTL */
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider[style*="width: 200px"] + .ant-layout,
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider:not(.ant-layout-sider-collapsed) + .ant-layout {
+  margin-right: 200px !important;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider[style*="width: 80px"] + .ant-layout,
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider.ant-layout-sider-collapsed + .ant-layout {
+  margin-right: 80px !important;
+  margin-left: 0 !important;
+}
+
+/* Smooth transition for margin changes */
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider + .ant-layout {
+  transition: margin-right 0.2s ease !important;
+}
+
+[dir="rtl"] .ant-menu-item {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .ant-menu-item-icon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+[dir="rtl"] .ant-menu-item a {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .ant-layout-sider-trigger {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .ant-layout-header {
+  direction: rtl;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Ensure proper flex direction for RTL layouts - Apply only to main layout */
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider {
+  flex-direction: row;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout {
+  flex: 1;
+  margin: 0;
+}
+
+[dir="rtl"] body > #root > .ant-layout.ant-layout-has-sider > .ant-layout-sider {
+  flex: 0 0 auto;
+}
+
+/* RTL Sider specific styles - Keep general for all sidebars */
+[dir="rtl"] .ant-layout-sider {
+  border-left: 1px solid #f0f0f0;
+  border-right: none;
+}
+
+/* General RTL layout support for nested layouts */
+[dir="rtl"] .ant-layout {
+  direction: rtl;
+}
+
+[dir="rtl"] .ant-layout-sider-zero-width-trigger {
+  right: auto;
+  left: -36px;
+}
+
+[dir="rtl"] .ant-layout-sider-zero-width-trigger-right {
+  left: auto;
+  right: -36px;
+}
+
+[dir="rtl"] .ant-statistic-title {
+  text-align: right;
+}
+
+[dir="rtl"] .ant-card-head-title {
+  text-align: right;
+}
+
+/* Fix for Arabic text in charts */
+[dir="rtl"] .recharts-legend-item-text {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .ant-typography {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  text-align: right;
+}
+
+[dir="rtl"] p {
+  text-align: right;
+}

@@ -1,0 +1,394 @@
+{
+  "hero": {
+    "title": "Take Your School",
+    "titleSecondLine": "to the Next Era",
+    "subtitle": "Transforming education with modern digital solutions for future schools. Experience lightning-fast performance, intuitive design, and flexible tools that adapt to your school's unique needs.",
+    "startNow": "Start Now"
+  },
+  "features": {
+    "modernUI": {
+      "title": "Modern UI & Lightning Fast",
+      "description": "Experience our cutting-edge interface designed for speed and elegance. Built with advanced technology to deliver exceptional performance that keeps up with your school's pace."
+    },
+    "flexible": {
+      "title": "Flexible & Adaptable",
+      "description": "Designed to adapt to your school's unique workflow and requirements. With local backup capabilities and continuous updates, your system stays current and your data stays secure on your premises."
+    },
+    "easeOfUse": {
+      "title": "Ease of Use",
+      "description": "Schoolify features an incredibly user-friendly interface that simplifies every task. From the comprehensive school dashboard to dedicated student and teacher apps, everything is intuitive and accessible. With built-in chat functionality and advanced analytics, you can communicate efficiently and make data-driven decisions. Spend less time learning software and more time focusing on education."
+    }
+  },
+  "advancedFeatures": {
+    "title": "What sets us apart",
+    "subtitle": "Unlock the Full Potential of Your School with Schoolify's Cutting-Edge Tools",
+    "userFriendly": {
+      "title": "User-Friendly Interface",
+      "description": "Intuitive and easy to navigate, making it accessible for all users from teachers to administrators."
+    },
+    "modernUIFeature": {
+      "title": "Modern UI",
+      "description": "Beautiful, contemporary design that creates an engaging and professional experience for all users."
+    },
+    "lightningFast": {
+      "title": "Lightning Fast",
+      "description": "Delivers swift performance, ensuring tasks are completed in record time for better efficiency."
+    },
+    "flexibleSystem": {
+      "title": "Flexible System",
+      "description": "Adapts to your school's unique workflow and requirements with customizable features and settings."
+    },
+    "schoolDashboard": {
+      "title": "School Dashboard",
+      "description": "Comprehensive administrative dashboard with all the tools you need to manage your school efficiently."
+    },
+    "studentApp": {
+      "title": "Student App",
+      "description": "Dedicated mobile app for students to access their schedules, grades, assignments, and school updates."
+    },
+    "teacherApp": {
+      "title": "Teacher App",
+      "description": "Specialized app for teachers to manage classes, take attendance, grade assignments, and communicate."
+    },
+    "continuousUpdates": {
+      "title": "Continuous Updates",
+      "description": "Regular feature updates and improvements to keep your system current with the latest educational needs."
+    },
+    "localBackup": {
+      "title": "Local Backup Data",
+      "description": "Secure local data backup ensures your school's information is always safe and accessible when needed."
+    },
+    "builtInChats": {
+      "title": "Built-in Chats",
+      "description": "Integrated communication system for seamless messaging between teachers, students, and administrators."
+    },
+    "advancedAnalytics": {
+      "title": "Advanced Analytics",
+      "description": "Comprehensive analytics and reporting tools to track student performance and school metrics."
+    },
+    "advancedTechnology": {
+      "title": "Advanced Technology",
+      "description": "Built with cutting-edge technology stack for maximum reliability, scalability, and performance."
+    },
+    "easyToUse": {
+      "title": "Easy to Use",
+      "description": "Designed with simplicity in mind - no complex training required, just intuitive tools that work."
+    }
+  },
+  "demo": {
+    "title": "School Dashboard",
+    "dashboard": "Dashboard",
+    "teachers": "Teachers",
+    "students": "Students",
+    "subjects": "Subjects",
+    "schedule": "Schedule",
+    "attendance": "Attendance",
+    "stats": {
+      "students": "Students",
+      "teachers": "Teachers",
+      "subjects": "Subjects"
+    },
+    "teacherApp": "Teacher App",
+    "classes": "Classes",
+    "weeklyAttendance": "Weekly Attendance"
+  },
+  "footer": {
+    "connectWithUs": "Connect with Us",
+    "quickLinks": "Quick Links",
+    "downloadApps": "Download Our Apps",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "phone": "Phone:",
+    "email": "Email:",
+    "phoneNumber": "+964 776 0612 021",
+    "emailAddress": "support@schoolify.academy",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "support": "Support",
+    "teacherApp": "Teacher App",
+    "studentApp": "Student App",
+    "adminDashboard": "Admin Dashboard",
+    "madeWithLove": "Made with ❤️ for Education",
+    "copyright": "© 2025 Schoolify. All rights reserved.",
+    "comingSoon": "is coming soon! Stay tuned for updates."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2025",
+    "backToHome": "← Back to Home",
+    "introduction": {
+      "title": "1. Introduction",
+      "content": "Welcome to Schoolify (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our school management system platform and related services."
+    },
+    "informationWeCollect": {
+      "title": "2. Information We Collect",
+      "personalInfo": {
+        "title": "2.1 Personal Information",
+        "intro": "We may collect the following types of personal information:",
+        "studentInfo": "Student Information: Names, dates of birth, student IDs, contact information, academic records, attendance data, grades, and behavioral records",
+        "parentInfo": "Parent/Guardian Information: Names, contact information, relationship to students, emergency contacts",
+        "teacherInfo": "Teacher/Staff Information: Names, contact information, employment details, qualifications, schedules",
+        "adminInfo": "Administrator Information: Names, contact information, role-specific access credentials"
+      },
+      "technicalInfo": {
+        "title": "2.2 Technical Information",
+        "intro": "We automatically collect certain technical information:",
+        "deviceInfo": "Device information and browser type",
+        "ipAddresses": "IP addresses and location data",
+        "usageStats": "Usage statistics and interaction data",
+        "logFiles": "Log files and system performance data"
+      }
+    },
+    "howWeUseInfo": {
+      "title": "3. How We Use Your Information",
+      "intro": "We use the collected information for the following purposes:",
+      "providingServices": "Providing and maintaining our educational services",
+      "managingEnrollment": "Managing student enrollment, attendance, and academic progress",
+      "facilitatingCommunication": "Facilitating communication between school, parents, and students",
+      "generatingReports": "Generating reports and analytics for educational improvement",
+      "ensuringSecurity": "Ensuring platform security and preventing unauthorized access",
+      "legalCompliance": "Complying with legal and regulatory requirements",
+      "improvingServices": "Improving our services and user experience"
+    },
+    "informationSharing": {
+      "title": "4. Information Sharing and Disclosure",
+      "intro": "We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:",
+      "educationalPartners": "Educational Partners: With authorized educational service providers who assist in delivering educational services",
+      "legalCompliance": "Legal Compliance: When required by law, court order, or regulatory requirements",
+      "safetyAndSecurity": "Safety and Security: To protect the safety of students, staff, or the general public",
+      "serviceProviders": "Service Providers: With trusted third-party service providers who assist in operating our platform"
+    },
+    "dataSecurity": {
+      "title": "5. Data Security",
+      "intro": "We implement comprehensive security measures to protect your information:",
+      "encryption": "End-to-end encryption for data transmission",
+      "localBackup": "Secure local backup systems",
+      "securityAudits": "Regular security audits and vulnerability assessments",
+      "accessControls": "Access controls and user authentication protocols",
+      "employeeTraining": "Employee training on data protection practices"
+    },
+    "dataRetention": {
+      "title": "6. Data Retention",
+      "content": "We retain personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. Student academic records may be retained according to educational regulations and institutional policies."
+    },
+    "yourRights": {
+      "title": "7. Your Rights and Choices",
+      "intro": "Depending on your location, you may have the following rights:",
+      "accessInfo": "Access to your personal information",
+      "correctionInfo": "Correction of inaccurate or incomplete information",
+      "deletionInfo": "Deletion of your personal information (subject to legal requirements)",
+      "restrictionProcessing": "Restriction of processing in certain circumstances",
+      "dataPortability": "Data portability rights",
+      "objectionProcessing": "Objection to certain processing activities",
+      "contactUs": "To exercise these rights, please contact us at",
+      "supportEmail": "support@schoolify.academy"
+    },
+    "childrensPrivacy": {
+      "title": "8. Children's Privacy",
+      "content": "Our services are designed for educational institutions and may involve the collection of information from students under the age of 18. We comply with applicable laws regarding children's privacy, including FERPA (Family Educational Rights and Privacy Act) and COPPA (Children's Online Privacy Protection Act) where applicable. We obtain appropriate consent from parents or educational institutions before collecting information from minors."
+    },
+    "internationalDataTransfers": {
+      "title": "9. International Data Transfers",
+      "content": "Your information may be transferred to and processed in countries other than your country of residence. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information."
+    },
+    "policyChanges": {
+      "title": "10. Changes to This Privacy Policy",
+      "content": "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the updated policy on our website and updating the \"Last updated\" date above. Your continued use of our services after such modifications constitutes acceptance of the updated Privacy Policy."
+    },
+    "contactInfo": {
+      "title": "11. Contact Information",
+      "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
+      "support": "Support:",
+      "phone": "Phone:",
+      "supportEmail": "support@schoolify.academy",
+      "phoneNumber": "+964 776 0612 021"
+    },
+    "compliance": {
+      "title": "12. Compliance",
+      "intro": "This Privacy Policy is designed to comply with applicable privacy laws and regulations, including but not limited to:",
+      "gdpr": "General Data Protection Regulation (GDPR)",
+      "ccpa": "California Consumer Privacy Act (CCPA)",
+      "ferpa": "Family Educational Rights and Privacy Act (FERPA)",
+      "coppa": "Children's Online Privacy Protection Act (COPPA)",
+      "pipeda": "Personal Information Protection and Electronic Documents Act (PIPEDA)"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: January 2025",
+    "backToHome": "← Back to Home",
+    "acceptanceOfTerms": {
+      "title": "1. Acceptance of Terms",
+      "content": "Welcome to Schoolify. These Terms of Service (\"Terms\") govern your use of our school management system platform and related services (collectively, the \"Service\"). By accessing or using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Service."
+    },
+    "descriptionOfService": {
+      "title": "2. Description of Service",
+      "intro": "Schoolify provides a comprehensive school management system that includes:",
+      "studentManagement": "Student information management",
+      "teacherManagement": "Teacher and staff management tools",
+      "attendanceTracking": "Attendance tracking and reporting",
+      "gradeManagement": "Grade management and analytics",
+      "communicationTools": "Communication tools for schools, teachers, parents, and students",
+      "adminDashboard": "Administrative dashboard and reporting",
+      "mobileApps": "Mobile applications for various user types",
+      "localBackup": "Local backup and data management"
+    },
+    "userAccounts": {
+      "title": "3. User Accounts and Registration",
+      "accountCreation": {
+        "title": "3.1 Account Creation",
+        "content": "To use certain features of our Service, you must create an account. You agree to provide accurate, complete, and up-to-date information during the registration process."
+      },
+      "accountSecurity": {
+        "title": "3.2 Account Security",
+        "content": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account."
+      },
+      "userTypes": {
+        "title": "3.3 User Types",
+        "intro": "Our Service supports different user types with varying access levels:",
+        "schoolAdmins": "School Administrators: Full system access and management",
+        "teachers": "Teachers: Classroom and student management tools",
+        "students": "Students: Access to personal academic information",
+        "parents": "Parents/Guardians: Access to their children's information"
+      }
+    },
+    "acceptableUse": {
+      "title": "4. Acceptable Use Policy",
+      "intro": "You agree not to use the Service to:",
+      "violateLaws": "Violate any applicable laws or regulations",
+      "infringeRights": "Infringe upon the rights of others",
+      "uploadHarmful": "Upload, post, or transmit harmful, offensive, or inappropriate content",
+      "unauthorizedAccess": "Attempt to gain unauthorized access to other accounts or systems",
+      "interfereService": "Interfere with or disrupt the Service or servers",
+      "commercialUse": "Use the Service for any commercial purpose without authorization",
+      "shareCredentials": "Share login credentials with unauthorized individuals",
+      "reverseEngineer": "Reverse engineer, decompile, or attempt to extract source code"
+    },
+    "educationalUse": {
+      "title": "5. Educational Use and FERPA Compliance",
+      "content": "Our Service is designed for educational purposes and complies with the Family Educational Rights and Privacy Act (FERPA) and other applicable educational privacy laws. Educational institutions using our Service maintain ownership and control of student educational records."
+    },
+    "dataOwnership": {
+      "title": "6. Data Ownership and Privacy",
+      "yourData": {
+        "title": "6.1 Your Data",
+        "content": "You retain ownership of all data you input into the Service. We do not claim ownership of your educational data, student records, or other information you store in our system."
+      },
+      "dataProcessing": {
+        "title": "6.2 Data Processing",
+        "content": "We process your data solely to provide and improve our Service. Our data processing practices are detailed in our Privacy Policy, which is incorporated into these Terms by reference."
+      },
+      "localBackup": {
+        "title": "6.3 Local Backup",
+        "content": "We provide local backup capabilities to ensure your data security and availability. You are responsible for maintaining appropriate backup procedures for your critical data."
+      }
+    },
+    "subscriptionPayment": {
+      "title": "7. Subscription and Payment",
+      "servicePlans": {
+        "title": "7.1 Service Plans",
+        "content": "We offer various service plans with different features and pricing. Details of available plans are provided on our website and may be updated from time to time."
+      },
+      "paymentTerms": {
+        "title": "7.2 Payment Terms",
+        "content": "Payment is due according to the billing cycle selected for your subscription. All fees are non-refundable unless otherwise specified or required by law."
+      },
+      "freeTrial": {
+        "title": "7.3 Free Trial",
+        "content": "We may offer free trial periods for new users. Trial terms and limitations will be clearly communicated during signup."
+      }
+    },
+    "intellectualProperty": {
+      "title": "8. Intellectual Property",
+      "ourRights": {
+        "title": "8.1 Our Rights",
+        "content": "The Service, including its software, design, text, graphics, and other content, is owned by Schoolify and protected by intellectual property laws. You may not copy, modify, or distribute our intellectual property without permission."
+      },
+      "yourRights": {
+        "title": "8.2 Your Rights",
+        "content": "Subject to these Terms, we grant you a limited, non-exclusive, non-transferable license to use the Service for your educational purposes."
+      }
+    },
+    "serviceAvailability": {
+      "title": "9. Service Availability and Modifications",
+      "availability": {
+        "title": "9.1 Service Availability",
+        "content": "We strive to maintain high service availability but cannot guarantee uninterrupted access. We may perform maintenance, updates, or modifications that temporarily affect service availability."
+      },
+      "modifications": {
+        "title": "9.2 Service Modifications",
+        "content": "We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time. We will provide reasonable notice of material changes when possible."
+      }
+    },
+    "limitationOfLiability": {
+      "title": "10. Limitation of Liability",
+      "content": "To the fullest extent permitted by law, Schoolify shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service. Our total liability shall not exceed the amount paid by you for the Service in the twelve months preceding the claim."
+    },
+    "indemnification": {
+      "title": "11. Indemnification",
+      "content": "You agree to indemnify and hold harmless Schoolify from any claims, damages, or expenses arising from your use of the Service, violation of these Terms, or infringement of any third-party rights."
+    },
+    "termination": {
+      "title": "12. Termination",
+      "terminationByYou": {
+        "title": "12.1 Termination by You",
+        "content": "You may terminate your account at any time by contacting our support team. Upon termination, your access to the Service will cease."
+      },
+      "terminationByUs": {
+        "title": "12.2 Termination by Us",
+        "content": "We may terminate your account if you violate these Terms or for any other reason with appropriate notice. We reserve the right to immediately terminate accounts for serious violations."
+      },
+      "dataAfterTermination": {
+        "title": "12.3 Data After Termination",
+        "content": "Following termination, we will provide you with a reasonable opportunity to export your data. After this period, your data may be deleted in accordance with our data retention policies."
+      }
+    },
+    "governingLaw": {
+      "title": "13. Governing Law and Dispute Resolution",
+      "content": "These Terms shall be governed by and construed in accordance with applicable laws. Any disputes arising from these Terms or your use of the Service shall be resolved through binding arbitration or in the courts of competent jurisdiction."
+    },
+    "updatesToTerms": {
+      "title": "14. Updates to Terms",
+      "content": "We may update these Terms from time to time to reflect changes in our Service or legal requirements. We will notify you of material changes by posting the updated Terms on our website and updating the \"Last updated\" date above. Your continued use of the Service after such changes constitutes acceptance of the updated Terms."
+    },
+    "contactInfo": {
+      "title": "15. Contact Information",
+      "intro": "If you have any questions about these Terms, please contact us:",
+      "support": "Support:",
+      "phone": "Phone:",
+      "supportEmail": "support@schoolify.academy",
+      "phoneNumber": "+964 776 0612 021"
+    },
+    "severability": {
+      "title": "16. Severability",
+      "content": "If any provision of these Terms is found to be unenforceable, the remaining provisions will continue to be valid and enforceable to the fullest extent permitted by law."
+    },
+    "entireAgreement": {
+      "title": "17. Entire Agreement",
+      "content": "These Terms, together with our Privacy Policy, constitute the entire agreement between you and Schoolify regarding your use of the Service and supersede all prior agreements and understandings."
+    }
+  },
+  "deleteAccount": {
+    "title": "Delete Account",
+    "subtitle": "Danger zone: review will occur before deletion",
+    "warningTitle": "Warning",
+    "warningBody": "Submitting this request will notify our central team. After manual review, your account and related data may be permanently deleted. This action cannot be undone.",
+    "phoneNumber": "Phone Number",
+    "schoolCode": "School Code (optional)",
+    "studentCode": "Student Code",
+    "password": "Password",
+    "passwordNote": "We will only use this password to confirm ownership; it is not stored.",
+    "deleteButton": "Delete Account",
+    "processing": "Submitting...",
+    "successTeacher": "Your delete request (teacher) was sent successfully.",
+    "successStudent": "Your delete request (student) was sent successfully.",
+    "error": "Failed to submit request. Please try again later.",
+    "backToHome": "← Back to Home"
+  },
+  "languageSwitcher": {
+    "tooltip": "Switch Language",
+    "english": "English",
+    "arabic": "Arabic"
+  }
+}

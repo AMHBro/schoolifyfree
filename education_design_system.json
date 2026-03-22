@@ -1,0 +1,317 @@
+{
+  "designSystem": {
+    "name": "Educational Platform Design System",
+    "version": "1.0.0",
+    "description": "A modern, friendly educational platform with emphasis on visual hierarchy, color coding, and intuitive navigation",
+    
+    "colorPalette": {
+      "primary": {
+        "orange": "#FF6B47",
+        "blue": "#742FB5", 
+        "purple": "#742FB5",
+        "green": "#10B981",
+        "yellow": "#F59E0B"
+      },
+      "neutral": {
+        "white": "#FFFFFF",
+        "lightGray": "#F9FAFB",
+        "mediumGray": "#E5E7EB",
+        "darkGray": "#6B7280",
+        "charcoal": "#374151"
+      },
+      "semantic": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#EF4444",
+        "info": "#3B82F6"
+      }
+    },
+
+    "typography": {
+      "fontFamily": "Inter, system-ui, sans-serif",
+      "hierarchy": {
+        "h1": {
+          "fontSize": "32px",
+          "fontWeight": "700",
+          "lineHeight": "1.2",
+          "letterSpacing": "-0.02em"
+        },
+        "h2": {
+          "fontSize": "24px",
+          "fontWeight": "600",
+          "lineHeight": "1.3",
+          "letterSpacing": "-0.01em"
+        },
+        "h3": {
+          "fontSize": "18px",
+          "fontWeight": "600",
+          "lineHeight": "1.4"
+        },
+        "body": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "1.5"
+        },
+        "caption": {
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "1.4",
+          "color": "#6B7280"
+        }
+      }
+    },
+
+    "spacing": {
+      "unit": 4,
+      "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96],
+      "containerPadding": 24,
+      "sectionSpacing": 32
+    },
+
+    "borderRadius": {
+      "small": "8px",
+      "medium": "12px",
+      "large": "16px",
+      "xl": "20px",
+      "circle": "50%"
+    },
+
+    "shadows": {
+      "light": "0 1px 3px rgba(0, 0, 0, 0.1)",
+      "medium": "0 4px 6px rgba(0, 0, 0, 0.1)",
+      "heavy": "0 10px 15px rgba(0, 0, 0, 0.1)",
+      "card": "0 2px 8px rgba(0, 0, 0, 0.08)"
+    },
+
+    "components": {
+      "navigationBar": {
+        "height": "60px",
+        "background": "#FFFFFF",
+        "shadow": "light",
+        "padding": "16px 24px",
+        "items": {
+          "alignment": "space-between",
+          "iconSize": "24px",
+          "gap": "32px"
+        }
+      },
+
+      "sidebar": {
+        "width": "280px",
+        "background": "#FFFFFF",
+        "padding": "24px",
+        "borderRadius": "0",
+        "shadow": "light"
+      },
+
+      "cards": {
+        "default": {
+          "background": "#FFFFFF",
+          "borderRadius": "large",
+          "padding": "24px",
+          "shadow": "card",
+          "border": "none"
+        },
+        "subject": {
+          "minHeight": "120px",
+          "background": "gradient",
+          "borderRadius": "large",
+          "padding": "20px",
+          "textColor": "#FFFFFF",
+          "iconSize": "32px"
+        },
+        "profile": {
+          "borderRadius": "medium",
+          "padding": "16px",
+          "background": "#FFFFFF",
+          "shadow": "light",
+          "layout": "horizontal"
+        }
+      },
+
+      "buttons": {
+        "primary": {
+          "background": "#742FB5",
+          "color": "#FFFFFF",
+          "borderRadius": "medium",
+          "padding": "12px 20px",
+          "fontWeight": "500",
+          "fontSize": "14px"
+        },
+        "secondary": {
+          "background": "transparent",
+          "color": "#6B7280",
+          "border": "1px solid #E5E7EB",
+          "borderRadius": "medium",
+          "padding": "12px 20px"
+        },
+        "icon": {
+          "width": "40px",
+          "height": "40px",
+          "borderRadius": "circle",
+          "background": "#F9FAFB",
+          "border": "none"
+        }
+      },
+
+      "avatars": {
+        "small": {
+          "size": "32px",
+          "borderRadius": "circle",
+          "border": "2px solid #FFFFFF"
+        },
+        "medium": {
+          "size": "48px",
+          "borderRadius": "circle",
+          "border": "2px solid #FFFFFF"
+        },
+        "large": {
+          "size": "80px",
+          "borderRadius": "circle",
+          "border": "3px solid #FFFFFF"
+        }
+      },
+
+      "lists": {
+        "itemSpacing": "12px",
+        "itemPadding": "16px",
+        "itemBorderRadius": "medium",
+        "hoverBackground": "#F9FAFB",
+        "dividerColor": "#E5E7EB"
+      },
+
+      "badges": {
+        "borderRadius": "20px",
+        "padding": "4px 12px",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "variants": {
+          "orange": {
+            "background": "#FF6B47",
+            "color": "#FFFFFF"
+          },
+          "blue": {
+            "background": "#3B82F6",
+            "color": "#FFFFFF"
+          },
+          "green": {
+            "background": "#10B981",
+            "color": "#FFFFFF"
+          }
+        }
+      }
+    },
+
+    "layouts": {
+      "dashboard": {
+        "structure": "sidebar + main",
+        "sidebarWidth": "280px",
+        "mainPadding": "24px",
+        "gap": "24px"
+      },
+      
+      "grid": {
+        "subjects": {
+          "columns": "repeat(auto-fit, minmax(280px, 1fr))",
+          "gap": "20px",
+          "aspectRatio": "3:2"
+        },
+        "schedule": {
+          "columns": "repeat(7, 1fr)",
+          "gap": "8px",
+          "itemMinHeight": "80px"
+        }
+      },
+
+      "modal": {
+        "overlay": "rgba(0, 0, 0, 0.5)",
+        "container": {
+          "maxWidth": "600px",
+          "borderRadius": "xl",
+          "padding": "32px",
+          "background": "#FFFFFF"
+        }
+      }
+    },
+
+    "interactions": {
+      "hover": {
+        "cards": "transform: translateY(-2px); shadow: medium",
+        "buttons": "opacity: 0.9",
+        "listItems": "background: #F9FAFB"
+      },
+      
+      "active": {
+        "buttons": "transform: scale(0.98)",
+        "tabs": "border-bottom: 2px solid currentColor"
+      },
+      
+      "transitions": {
+        "default": "all 0.2s ease",
+        "slow": "all 0.3s ease",
+        "bounce": "all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+      }
+    },
+
+    "iconography": {
+      "style": "outline",
+      "strokeWidth": "1.5px",
+      "sizes": {
+        "small": "16px",
+        "medium": "20px",
+        "large": "24px",
+        "xl": "32px"
+      },
+      "usage": {
+        "navigation": "medium",
+        "buttons": "small",
+        "cards": "large",
+        "decorative": "xl"
+      }
+    },
+
+    "dataVisualization": {
+      "charts": {
+        "colors": ["#FF6B47", "#6366F1", "#10B981", "#F59E0B", "#8B5CF6"],
+        "borderRadius": "4px",
+        "spacing": "8px"
+      },
+      "progress": {
+        "height": "8px",
+        "borderRadius": "4px",
+        "background": "#E5E7EB",
+        "fill": "#10B981"
+      }
+    },
+
+    "responsiveness": {
+      "breakpoints": {
+        "mobile": "768px",
+        "tablet": "1024px",
+        "desktop": "1280px"
+      },
+      "adaptations": {
+        "mobile": {
+          "sidebar": "hidden",
+          "navigation": "bottom-tabs",
+          "cards": "full-width",
+          "padding": "16px"
+        },
+        "tablet": {
+          "sidebar": "overlay",
+          "grid": "2-columns",
+          "padding": "20px"
+        }
+      }
+    },
+
+    "principles": {
+      "hierarchy": "Use color, size, and spacing to create clear visual hierarchy",
+      "consistency": "Maintain consistent spacing, colors, and interactions throughout",
+      "accessibility": "Ensure sufficient color contrast and touch targets",
+      "friendliness": "Use rounded corners, gentle shadows, and warm colors",
+      "efficiency": "Prioritize quick recognition and easy navigation",
+      "modularity": "Design components that can be easily combined and reused"
+    }
+  }
+}

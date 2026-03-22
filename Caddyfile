@@ -1,0 +1,15 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+	log {
+		format console
+	}
+}
+
+:{$PORT} {
+	root * /srv
+	encode gzip
+	try_files {path} /index.html
+	file_server
+} 

@@ -1,0 +1,6 @@
+# Force Railway to use Dockerfile instead of nixpacks
+# Ignore node_modules to prevent Node.js detection
+node_modules/
+backend/
+central-dashboard/
+teacher-app/ 

@@ -1,0 +1,17 @@
+[phases.setup]
+nixPkgs = ["bun", "openssl"]
+
+[phases.install]
+cmds = ["bun install --frozen-lockfile"]
+
+[phases.build]
+cmds = [
+  "bunx prisma generate",
+  "echo 'Prisma client generated successfully'"
+]
+
+[start]
+cmd = "sleep 10 && bunx prisma generate && bunx prisma migrate deploy && bun run start"
+
+[variables]
+NODE_ENV = "production" 

@@ -1,0 +1,11 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "backend/Dockerfile"
+dockerContext = "backend"
+
+[deploy]
+startCommand = "bun start"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10 

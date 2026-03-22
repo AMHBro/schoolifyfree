@@ -1,0 +1,454 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CentralAdmin {
+  id        String   @id @default(uuid()) @db.Uuid
+  username  String   @unique
+  password  String
+  name      String
+  email     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("central_admins")
+}
+
+model School {
+  id                    String          @id @default(uuid()) @db.Uuid
+  username              String          @unique
+  password              String
+  schoolName            String
+  contactEmail          String?
+  contactPhone          String          @unique
+  address               String?
+  isActive              Boolean         @default(true)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  schoolCode            String          @unique
+  accessCode            String?         @unique
+  accessCodeActivated   Boolean         @default(false)
+  deployed_at           DateTime?
+  deployment_status     String?
+  deployment_url        String?
+  is_deployed           Boolean?        @default(false)
+  railway_project_id    String?
+  activationKeys        ActivationKey[]
+  chats                 Chat[]
+  adminChats            AdminChat[]
+  exams                 Exam[]
+  schedules             Schedule[]
+  stages                Stage[]
+  students              Student[]
+  subjects              Subject[]
+  systemSettings        SystemSettings?
+  teacherPosts          TeacherPost[]
+  teachers              Teacher[]
+  requests              CentralRequest[]
+
+  @@map("schools")
+}
+
+model Teacher {
+  id                String           @id @default(uuid()) @db.Uuid
+  name              String
+  age               Int?
+  birthdate         DateTime?
+  gender            Gender?
+  phoneNumber       String
+  password          String
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  schoolId          String           @db.Uuid
+  attendanceRecords Attendance[]
+  chats             Chat[]
+  exams             Exam[]
+  postComments      PostComment[]
+  postLikes         PostLike[]
+  schedules         Schedule[]
+  studentGrades     StudentGrade[]
+  studentNotes      StudentNote[]
+  posts             TeacherPost[]
+  stages            TeacherStage[]
+  subjects          TeacherSubject[]
+  school            School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([phoneNumber, schoolId])
+  @@map("teachers")
+}
+
+model Student {
+  id                String          @id @default(uuid()) @db.Uuid
+  name              String
+  age               Int
+  gender            Gender
+  phoneNumber       String
+  stageId           String          @db.Uuid
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  schoolId          String          @db.Uuid
+  code              String
+  password          String
+  activationKeys    ActivationKey[]
+  attendanceRecords Attendance[]
+  chats             Chat[]
+  grades            StudentGrade[]
+  notes             StudentNote[]
+  postLikes         PostLike[]
+  postComments      PostComment[]
+  school            School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stage             Stage           @relation(fields: [stageId], references: [id], onDelete: Cascade)
+
+  @@unique([phoneNumber, schoolId])
+  @@unique([code, schoolId])
+  @@map("students")
+}
+
+model Stage {
+  id           String         @id @default(uuid()) @db.Uuid
+  name         String
+  studentCount Int            @default(0)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  schoolId     String         @db.Uuid
+  exams        Exam[]
+  schedules    Schedule[]
+  school       School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  students     Student[]
+  subjects     Subject[]
+  teacherPosts TeacherPost[]
+  teachers     TeacherStage[]
+
+  @@unique([name, schoolId])
+  @@map("stages")
+}
+
+model Subject {
+  id                String           @id @default(uuid()) @db.Uuid
+  name              String
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  stageId           String           @db.Uuid
+  schoolId          String           @db.Uuid
+  attendanceRecords Attendance[]
+  exams             Exam[]
+  schedules         Schedule[]
+  studentGrades     StudentGrade[]
+  school            School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stage             Stage            @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  teacherPosts      TeacherPost[]
+  teachers          TeacherSubject[]
+
+  @@unique([name, stageId, schoolId])
+  @@map("subjects")
+}
+
+model Exam {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String?
+  examDate    DateTime
+  stageId     String   @db.Uuid
+  subjectId   String   @db.Uuid
+  teacherId   String   @db.Uuid
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  classNumber String
+  schoolId    String   @db.Uuid
+  school      School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stage       Stage    @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  subject     Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher     Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@map("exams")
+}
+
+model Schedule {
+  id        String    @id @default(uuid()) @db.Uuid
+  dayOfWeek DayOfWeek
+  timeSlot  Int
+  startTime String?   // Time in HH:mm format (e.g., "08:00")
+  endTime   String?   // Time in HH:mm format (e.g., "09:00")
+  stageId   String    @db.Uuid
+  teacherId String    @db.Uuid
+  subjectId String    @db.Uuid
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  schoolId  String    @db.Uuid
+  school    School    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stage     Stage     @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  subject   Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher   Teacher   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@unique([stageId, dayOfWeek, timeSlot, schoolId])
+  @@map("schedules")
+}
+
+model TeacherStage {
+  teacherId  String   @db.Uuid
+  stageId    String   @db.Uuid
+  assignedAt DateTime @default(now())
+  stage      Stage    @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  teacher    Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@id([teacherId, stageId])
+  @@map("teacher_stages")
+}
+
+model TeacherSubject {
+  teacherId  String   @db.Uuid
+  subjectId  String   @db.Uuid
+  assignedAt DateTime @default(now())
+  subject    Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher    Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@id([teacherId, subjectId])
+  @@map("teacher_subjects")
+}
+
+model Attendance {
+  id        String           @id @default(uuid()) @db.Uuid
+  studentId String           @db.Uuid
+  subjectId String           @db.Uuid
+  date      DateTime         @db.Date
+  status    AttendanceStatus @default(absent)
+  markedAt  DateTime?
+  markedBy  String?          @db.Uuid
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  teacher   Teacher?         @relation(fields: [markedBy], references: [id])
+  student   Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject   Subject          @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, subjectId, date])
+  @@map("attendance")
+}
+
+model StudentNote {
+  id        String   @id @default(uuid()) @db.Uuid
+  studentId String   @db.Uuid
+  teacherId String   @db.Uuid
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  teacher   Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@map("student_notes")
+}
+
+model StudentGrade {
+  id        String    @id @default(uuid()) @db.Uuid
+  studentId String    @db.Uuid
+  teacherId String    @db.Uuid
+  subjectId String    @db.Uuid
+  grade     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  gradeType GradeType @default(MONTH_1_EXAM)
+  student   Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject   Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher   Teacher   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@map("student_grades")
+}
+
+model TeacherPost {
+  id        String        @id @default(uuid()) @db.Uuid
+  title     String
+  content   String
+  stageId   String        @db.Uuid
+  subjectId String        @db.Uuid
+  teacherId String        @db.Uuid
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  schoolId  String        @db.Uuid
+  comments  PostComment[]
+  likes     PostLike[]
+  school    School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stage     Stage         @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  subject   Subject       @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher   Teacher       @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@map("teacher_posts")
+}
+
+model PostLike {
+  id        String      @id @default(uuid()) @db.Uuid
+  postId    String      @db.Uuid
+  teacherId String?     @db.Uuid
+  studentId String?     @db.Uuid
+  createdAt DateTime    @default(now())
+  post      TeacherPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  teacher   Teacher?    @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  student   Student?    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, teacherId])
+  @@unique([postId, studentId])
+  @@map("post_likes")
+}
+
+model PostComment {
+  id        String      @id @default(uuid()) @db.Uuid
+  postId    String      @db.Uuid
+  teacherId String?     @db.Uuid
+  studentId String?     @db.Uuid
+  content   String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  post      TeacherPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  teacher   Teacher?    @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  student   Student?    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@map("post_comments")
+}
+
+model SystemSettings {
+  id           String   @id @default(uuid()) @db.Uuid
+  countryName  String   @default("Palestine")
+  ministryName String   @default("Ministry of Education")
+  schoolName   String   @default("School Name")
+  managerName  String   @default("Manager Name")
+  studyYear    String   @default("2024-2025")
+  logoUrl      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  schoolId     String   @unique @db.Uuid
+  school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@map("system_settings")
+}
+
+model ActivationKey {
+  id        String    @id @default(uuid()) @db.Uuid
+  key       String    @unique
+  schoolId  String    @db.Uuid
+  isUsed    Boolean   @default(false)
+  usedAt    DateTime?
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  studentId String?   @db.Uuid
+  school    School    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student   Student?  @relation(fields: [studentId], references: [id])
+
+  @@map("activation_keys")
+}
+
+model Chat {
+  id          String        @id @default(uuid()) @db.Uuid
+  studentId   String        @db.Uuid
+  teacherId   String        @db.Uuid
+  lastMessage String?
+  lastMessageAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  schoolId    String        @db.Uuid
+  messages    ChatMessage[]
+  school      School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student     Student       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  teacher     Teacher       @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, teacherId])
+  @@map("chats")
+}
+
+model ChatMessage {
+  id         String      @id @default(uuid()) @db.Uuid
+  chatId     String      @db.Uuid
+  senderId   String      @db.Uuid
+  senderType SenderType
+  content    String
+  readAt     DateTime?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  chat       Chat        @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+}
+
+model AdminChat {
+  id              String               @id @default(uuid()) @db.Uuid
+  schoolId        String               @db.Uuid
+  participantId   String               @db.Uuid
+  participantType String               // "TEACHER" or "STUDENT"
+  lastMessage     String?
+  lastMessageAt   DateTime?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+  messages        AdminChatMessage[]
+  school          School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, participantId, participantType])
+  @@map("admin_chats")
+}
+
+model AdminChatMessage {
+  id         String           @id @default(uuid()) @db.Uuid
+  chatId     String           @db.Uuid
+  senderId   String           @db.Uuid
+  senderType String           // "ADMIN", "TEACHER", or "STUDENT"
+  content    String
+  readAt     DateTime?
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  chat       AdminChat        @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@map("admin_chat_messages")
+}
+
+model CentralRequest {
+  id           String   @id @default(uuid()) @db.Uuid
+  schoolId     String?  @db.Uuid
+  schoolCode   String
+  teacherPhone String
+  type         String   @default("DELETE_ACCOUNT")
+  status       String   @default("PENDING")
+  note         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  school       School?  @relation(fields: [schoolId], references: [id], onDelete: SetNull)
+
+  @@map("central_requests")
+}
+
+enum Gender {
+  male
+  female
+}
+
+enum DayOfWeek {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
+}
+
+enum AttendanceStatus {
+  present
+  absent
+}
+
+enum GradeType {
+  MONTH_1_EXAM
+  MONTH_2_EXAM
+  MID_TERM_EXAM
+  MONTH_3_EXAM
+  MONTH_4_EXAM
+  FINAL_EXAM
+}
+
+enum SenderType {
+  STUDENT
+  TEACHER
+}
