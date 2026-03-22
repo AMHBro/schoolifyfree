@@ -8,26 +8,33 @@ const prisma = new PrismaClient();
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
 
+type SchoolAuthResult =
+  | { ok: true; schoolId: string }
+  | { ok: false; error: string; status: number };
+
 // Helper function to verify school authentication
-const verifySchoolAuth = async (headers: any, jwt: any) => {
+const verifySchoolAuth = async (
+  headers: any,
+  jwt: any
+): Promise<SchoolAuthResult> => {
   const authHeader = headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return { error: "Unauthorized", status: 401 };
+    return { ok: false, error: "Unauthorized", status: 401 };
   }
 
   const token = authHeader.substring(7);
   const payload = (await jwt.verify(token)) as any;
 
   if (!payload || payload.type !== "school") {
-    return { error: "Access denied", status: 403 };
+    return { ok: false, error: "Access denied", status: 403 };
   }
 
   const schoolId = payload.schoolId as string;
   if (!schoolId) {
-    return { error: "Invalid token: missing schoolId", status: 403 };
+    return { ok: false, error: "Invalid token: missing schoolId", status: 403 };
   }
 
-  return { schoolId, success: true };
+  return { ok: true, schoolId };
 };
 
 // Dashboard chat endpoints
@@ -45,12 +52,12 @@ export const dashboardChatsRoutes = new Elysia({ prefix: "/api/dashboard" })
     async ({ headers, jwt, set }) => {
       try {
         const authResult = await verifySchoolAuth(headers, jwt);
-        if (authResult.error) {
+        if (!authResult.ok) {
           set.status = authResult.status;
           return { success: false, message: authResult.error };
         }
 
-        const schoolId = authResult.schoolId;
+        const { schoolId } = authResult;
 
         // Get all teachers and students from this school
         const [teachers, students] = await Promise.all([
@@ -130,12 +137,12 @@ export const dashboardChatsRoutes = new Elysia({ prefix: "/api/dashboard" })
     async ({ headers, jwt, body, set }) => {
       try {
         const authResult = await verifySchoolAuth(headers, jwt);
-        if (authResult.error) {
+        if (!authResult.ok) {
           set.status = authResult.status;
           return { success: false, message: authResult.error };
         }
 
-        const schoolId = authResult.schoolId;
+        const { schoolId } = authResult;
         const { participantId, participantType } = body as {
           participantId: string;
           participantType: "TEACHER" | "STUDENT";
@@ -219,12 +226,12 @@ export const dashboardChatsRoutes = new Elysia({ prefix: "/api/dashboard" })
     async ({ headers, jwt, set }) => {
       try {
         const authResult = await verifySchoolAuth(headers, jwt);
-        if (authResult.error) {
+        if (!authResult.ok) {
           set.status = authResult.status;
           return { success: false, message: authResult.error };
         }
 
-        const schoolId = authResult.schoolId;
+        const { schoolId } = authResult;
 
         const chats = await prisma.adminChat.findMany({
           where: { schoolId },
@@ -303,12 +310,12 @@ export const dashboardChatsRoutes = new Elysia({ prefix: "/api/dashboard" })
     async ({ params: { chatId }, headers, jwt, set }) => {
       try {
         const authResult = await verifySchoolAuth(headers, jwt);
-        if (authResult.error) {
+        if (!authResult.ok) {
           set.status = authResult.status;
           return { success: false, message: authResult.error };
         }
 
-        const schoolId = authResult.schoolId;
+        const { schoolId } = authResult;
 
         // Verify chat belongs to this school
         const chat = await prisma.adminChat.findFirst({
@@ -372,12 +379,12 @@ export const dashboardChatsRoutes = new Elysia({ prefix: "/api/dashboard" })
     async ({ params: { chatId }, headers, jwt, body, set }) => {
       try {
         const authResult = await verifySchoolAuth(headers, jwt);
-        if (authResult.error) {
+        if (!authResult.ok) {
           set.status = authResult.status;
           return { success: false, message: authResult.error };
         }
 
-        const schoolId = authResult.schoolId;
+        const { schoolId } = authResult;
         const { content } = body as { content: string };
 
         // Verify chat belongs to this school
