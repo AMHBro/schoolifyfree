@@ -463,6 +463,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({ searchQuery }) => {
         onClearFilters={handleClearFilters}
       />
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={displayData || []}
         rowKey="id"
@@ -495,7 +496,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({ searchQuery }) => {
           form.resetFields();
         }}
         footer={null}
-        width={600}
+        width="min(600px, calc(100vw - 32px))"
       >
         <Form
           form={form}

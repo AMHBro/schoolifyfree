@@ -199,6 +199,7 @@ const StagesTable: React.FC<StagesTableProps> = ({ searchQuery }) => {
   return (
     <>
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={displayData || []}
         rowKey="id"

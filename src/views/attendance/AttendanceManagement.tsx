@@ -379,6 +379,7 @@ const AttendanceManagement: React.FC = () => {
             }
           >
             <Table
+              scroll={{ x: "max-content" }}
               columns={studentColumns}
               dataSource={studentAttendanceData}
               rowKey={(record) => record.student.id}
@@ -393,7 +394,7 @@ const AttendanceManagement: React.FC = () => {
         open={reportModal}
         onOk={handleExportReport}
         onCancel={() => setReportModal(false)}
-        width={800}
+        width="min(800px, calc(100vw - 32px))"
       >
         <Space direction="vertical" style={{ width: "100%" }}>
           <Typography.Text strong>Report Configuration:</Typography.Text>

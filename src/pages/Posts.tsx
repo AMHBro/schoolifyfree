@@ -592,7 +592,7 @@ const Posts: React.FC = () => {
         open={isCommentsModalVisible}
         onCancel={hideCommentsModal}
         footer={null}
-        width={600}
+        width="min(600px, calc(100vw - 32px))"
         style={{ top: 20 }}
       >
         {selectedPost && (
@@ -723,7 +723,7 @@ const Posts: React.FC = () => {
         cancelText={t("posts.delete.cancelButton")}
         okButtonProps={{ danger: true, loading: isDeleting }}
         cancelButtonProps={{ disabled: isDeleting }}
-        width={500}
+        width="min(500px, calc(100vw - 32px))"
       >
         <div style={{ marginTop: "16px" }}>
           <Text>

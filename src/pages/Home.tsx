@@ -304,8 +304,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* First Row - Overview Statistics */}
-      <Row gutter={16} className="mb-12" style={{ marginBottom: "16px" }}>
-        <Col span={6}>
+      <Row
+        gutter={[16, 16]}
+        className="mb-12"
+        style={{ marginBottom: "16px" }}
+      >
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title={t("home.statistics.totalStudents")}
@@ -316,7 +320,7 @@ const Home: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title={t("home.statistics.totalTeachers")}
@@ -327,7 +331,7 @@ const Home: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title={t("home.statistics.totalSubjects")}
@@ -338,7 +342,7 @@ const Home: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title={t("home.statistics.totalStages")}
@@ -352,8 +356,12 @@ const Home: React.FC = () => {
       </Row>
 
       {/* Second Row - Student Growth and Distributions */}
-      <Row gutter={16} className="mb-12" style={{ marginBottom: "16px" }}>
-        <Col span={8}>
+      <Row
+        gutter={[16, 16]}
+        className="mb-12"
+        style={{ marginBottom: "16px" }}
+      >
+        <Col xs={24} lg={8}>
           <Card
             title={t("home.charts.studentGrowthTrend")}
             style={{ height: "100%" }}
@@ -376,7 +384,7 @@ const Home: React.FC = () => {
             )}
           </Card>
         </Col>
-        <Col span={8}>
+        <Col xs={24} lg={8}>
           <Card
             title={t("home.charts.studentAgeDistribution")}
             style={{ height: "100%" }}
@@ -423,7 +431,7 @@ const Home: React.FC = () => {
             )}
           </Card>
         </Col>
-        <Col span={8}>
+        <Col xs={24} lg={8}>
           <Card
             title={t("home.charts.genderDistribution")}
             style={{ height: "100%" }}
@@ -473,7 +481,7 @@ const Home: React.FC = () => {
       </Row>
 
       {/* Third Row - Upcoming Exams */}
-      <Row gutter={16} className="mb-12">
+      <Row gutter={[16, 16]} className="mb-12">
         <Col span={24}>
           <Card
             title={
@@ -543,7 +551,7 @@ const Home: React.FC = () => {
       </Row>
 
       {/* Fourth Row - Stages Distribution */}
-      <Row gutter={16} className="mb-12" style={{ marginTop: "16px" }}>
+      <Row gutter={[16, 16]} className="mb-12" style={{ marginTop: "16px" }}>
         <Col span={24}>
           <Card title={t("home.charts.studentsPerStage")}>
             {isLoading ? (
@@ -566,7 +574,7 @@ const Home: React.FC = () => {
 
       {/* Fifth Row - Stage Schedule Buttons */}
       {!isLoading && stageStatistics.length > 0 && (
-        <Row gutter={16} className="mb-12" style={{ marginTop: "16px" }}>
+        <Row gutter={[16, 16]} className="mb-12" style={{ marginTop: "16px" }}>
           <Col span={24}>
             <Card title={t("home.stageSchedules.title")}>
               <Space size="middle" wrap>
@@ -594,7 +602,7 @@ const Home: React.FC = () => {
 
       {/* Sixth Row - Selected Stage Schedule */}
       {selectedStage && (
-        <Row gutter={16} style={{ marginTop: "16px" }}>
+        <Row gutter={[16, 16]} style={{ marginTop: "16px" }}>
           <Col span={24}>
             <Card
               title={`${

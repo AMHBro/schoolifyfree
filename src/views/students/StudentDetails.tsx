@@ -318,6 +318,7 @@ const StudentDetails: React.FC = () => {
             )}
 
             <Table
+              scroll={{ x: "max-content" }}
               columns={columns}
               dataSource={tableData}
               pagination={false}

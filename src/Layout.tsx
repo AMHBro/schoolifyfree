@@ -1,6 +1,15 @@
-import React, { useState } from "react";
-import { Layout, Menu, Button, theme, Dropdown, Space, Typography } from "antd";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  Layout,
+  Menu,
+  Button,
+  theme,
+  Dropdown,
+  Space,
+  Typography,
+  Drawer,
+} from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -9,9 +18,9 @@ import {
   AppstoreOutlined,
   BookOutlined,
   FileTextOutlined,
+  TrophyOutlined,
   SettingOutlined,
   MessageOutlined,
-  TrophyOutlined,
   LogoutOutlined,
   BankOutlined,
   KeyOutlined,
@@ -21,6 +30,7 @@ import {
 import { useAuth } from "./contexts/AuthContext";
 import { useLanguage } from "./contexts/LanguageContext";
 import { useTranslation } from "react-i18next";
+import { useIsNarrowScreen } from "./hooks/useIsNarrowScreen";
 
 const { Text } = Typography;
 
@@ -32,14 +42,26 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { school, logout } = useAuth();
   const { language, changeLanguage, isRTL } = useLanguage();
   const { t } = useTranslation();
+  const isMobile = useIsNarrowScreen();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  useEffect(() => {
+    if (!isMobile) {
+      setMobileDrawerOpen(false);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    setMobileDrawerOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = () => {
     logout();
@@ -68,226 +90,297 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     },
   ];
 
-  return (
-    <Layout style={{ minHeight: "100vh", direction: isRTL ? "rtl" : "ltr" }}>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        reverseArrow={isRTL}
-        style={{
-          position: "sticky",
-          top: 0,
-          height: "100vh",
-          overflow: "auto",
-        }}
+  const menuItems = useMemo(
+    () => [
+      {
+        key: "/",
+        icon: <UserOutlined />,
+        label: t("common.dashboard"),
+      },
+      {
+        key: "/teachers",
+        icon: <TeamOutlined />,
+        label: t("common.teachers"),
+      },
+      {
+        key: "/students",
+        icon: <TeamOutlined />,
+        label: t("common.students"),
+      },
+      {
+        key: "/stages",
+        icon: <AppstoreOutlined />,
+        label: t("common.stages"),
+      },
+      {
+        key: "/subjects",
+        icon: <BookOutlined />,
+        label: t("common.subjects"),
+      },
+      {
+        key: "/exams",
+        icon: <FileTextOutlined />,
+        label: t("common.exams"),
+      },
+      {
+        key: "/posts",
+        icon: <MessageOutlined />,
+        label: t("common.posts"),
+      },
+      {
+        key: "/chats",
+        icon: <CommentOutlined />,
+        label: t("common.chats"),
+      },
+      {
+        key: "/grades",
+        icon: <TrophyOutlined />,
+        label: t("common.grades"),
+      },
+      {
+        key: "/activation-keys",
+        icon: <KeyOutlined />,
+        label: t("common.activationKeys"),
+      },
+      {
+        key: "/settings",
+        icon: <SettingOutlined />,
+        label: t("common.settings"),
+      },
+    ],
+    [t]
+  );
+
+  const handleMenuNavigate = ({ key }: { key: string }) => {
+    navigate(key);
+    if (isMobile) {
+      setMobileDrawerOpen(false);
+    }
+  };
+
+  const logoBlock = (
+    <div
+      style={{
+        height: "64px",
+        margin: isMobile ? "12px" : "16px",
+        background: "rgba(255, 255, 255, 0.2)",
+        borderRadius: "6px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "white",
+        fontSize: collapsed && !isMobile ? "14px" : "18px",
+        fontWeight: "bold",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        padding: "0 8px",
+      }}
+    >
+      Schoolify
+    </div>
+  );
+
+  const sidebarMenu = (
+    <Menu
+      theme="dark"
+      mode="inline"
+      selectedKeys={[location.pathname]}
+      items={menuItems}
+      onClick={handleMenuNavigate}
+    />
+  );
+
+  const drawerMenu = (
+    <>
+      {logoBlock}
+      {sidebarMenu}
+    </>
+  );
+
+  const headerPadding = isMobile ? "0 8px 0 12px" : "0 24px";
+  const contentMargin = isMobile ? "12px 8px" : "24px 16px";
+  const contentPadding = isMobile ? 12 : 24;
+
+  const menuToggleButton = (
+    <Button
+      type="text"
+      icon={
+        isMobile ? (
+          <MenuUnfoldOutlined />
+        ) : collapsed ? (
+          <MenuUnfoldOutlined />
+        ) : (
+          <MenuFoldOutlined />
+        )
+      }
+      onClick={() =>
+        isMobile ? setMobileDrawerOpen(true) : setCollapsed(!collapsed)
+      }
+      aria-label={
+        isMobile
+          ? isRTL
+            ? "فتح القائمة"
+            : "Open menu"
+          : collapsed
+            ? "Expand sidebar"
+            : "Collapse sidebar"
+      }
+      style={{
+        fontSize: "16px",
+        width: isMobile ? 48 : 64,
+        height: isMobile ? 48 : 64,
+        flexShrink: 0,
+      }}
+    />
+  );
+
+  const headerRight = (
+    <Space size={isMobile ? "small" : "middle"} style={{ minWidth: 0 }}>
+      <Space size="small" style={{ minWidth: 0, display: isMobile ? "none" : "flex" }}>
+        <BankOutlined style={{ color: "#667eea", flexShrink: 0 }} />
+        <Text strong ellipsis style={{ maxWidth: 200 }}>
+          {school?.schoolName}
+        </Text>
+      </Space>
+      {isMobile && (
+        <Space size={4} style={{ minWidth: 0 }}>
+          <BankOutlined style={{ color: "#667eea", flexShrink: 0 }} />
+          <Text strong ellipsis style={{ maxWidth: 120 }}>
+            {school?.schoolName}
+          </Text>
+        </Space>
+      )}
+      <Dropdown
+        menu={{ items: languageMenuItems }}
+        placement={isRTL ? "bottomLeft" : "bottomRight"}
+        trigger={["click"]}
       >
-        <div
+        <Button
+          type="text"
           style={{
-            height: "64px",
-            margin: "16px",
-            background: "rgba(255, 255, 255, 0.2)",
-            borderRadius: "6px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            fontSize: collapsed ? "14px" : "18px",
-            fontWeight: "bold",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
+            height: "auto",
+            padding: isMobile ? "8px 6px" : "8px 12px",
+            flexShrink: 0,
           }}
         >
-          Schoolify
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[location.pathname]}
-          items={[
-            {
-              key: "/",
-              icon: <UserOutlined />,
-              label: <Link to="/">{t("common.dashboard")}</Link>,
-            },
-            {
-              key: "/teachers",
-              icon: <TeamOutlined />,
-              label: <Link to="/teachers">{t("common.teachers")}</Link>,
-            },
-            {
-              key: "/students",
-              icon: <TeamOutlined />,
-              label: <Link to="/students">{t("common.students")}</Link>,
-            },
-            {
-              key: "/stages",
-              icon: <AppstoreOutlined />,
-              label: <Link to="/stages">{t("common.stages")}</Link>,
-            },
-            {
-              key: "/subjects",
-              icon: <BookOutlined />,
-              label: <Link to="/subjects">{t("common.subjects")}</Link>,
-            },
-            {
-              key: "/exams",
-              icon: <FileTextOutlined />,
-              label: <Link to="/exams">{t("common.exams")}</Link>,
-            },
-            {
-              key: "/posts",
-              icon: <MessageOutlined />,
-              label: <Link to="/posts">{t("common.posts")}</Link>,
-            },
-            {
-              key: "/chats",
-              icon: <CommentOutlined />,
-              label: <Link to="/chats">{t("common.chats")}</Link>,
-            },
-            {
-              key: "/grades",
-              icon: <TrophyOutlined />,
-              label: <Link to="/grades">{t("common.grades")}</Link>,
-            },
-            {
-              key: "/activation-keys",
-              icon: <KeyOutlined />,
-              label: (
-                <Link to="/activation-keys">{t("common.activationKeys")}</Link>
-              ),
-            },
-            {
-              key: "/settings",
-              icon: <SettingOutlined />,
-              label: <Link to="/settings">{t("common.settings")}</Link>,
-            },
-          ]}
-        />
-      </Sider>
-      <Layout>
-        <Header
+          <Space size={4}>
+            <GlobalOutlined />
+            {!isMobile && (
+              <Text>{language === "ar" ? "العربية" : "English"}</Text>
+            )}
+          </Space>
+        </Button>
+      </Dropdown>
+      <Dropdown
+        menu={{ items: userMenuItems }}
+        placement={isRTL ? "bottomLeft" : "bottomRight"}
+      >
+        <Button
+          type="text"
           style={{
-            padding: "0 24px",
+            height: "auto",
+            padding: isMobile ? "8px 6px" : "8px 12px",
+            maxWidth: isMobile ? 120 : "none",
+          }}
+        >
+          <Space size={4}>
+            <UserOutlined />
+            <Text ellipsis style={{ maxWidth: isMobile ? 72 : 160 }}>
+              {school?.username}
+            </Text>
+          </Space>
+        </Button>
+      </Dropdown>
+    </Space>
+  );
+
+  return (
+    <Layout
+      className={`sms-root-layout${isMobile ? " sms-root-layout--mobile" : ""}`}
+      style={{
+        minHeight: "100dvh",
+        direction: isRTL ? "rtl" : "ltr",
+        width: "100%",
+        maxWidth: "100%",
+      }}
+    >
+      {!isMobile && (
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          reverseArrow={isRTL}
+          width={200}
+          collapsedWidth={80}
+          style={{
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            overflow: "auto",
+          }}
+        >
+          {logoBlock}
+          {sidebarMenu}
+        </Sider>
+      )}
+
+      <Drawer
+        title={null}
+        placement={isRTL ? "right" : "left"}
+        width={280}
+        onClose={() => setMobileDrawerOpen(false)}
+        open={isMobile && mobileDrawerOpen}
+        styles={{
+          body: { padding: 0, background: "#001529" },
+          header: { display: "none" },
+        }}
+        className="sms-mobile-drawer"
+      >
+        {drawerMenu}
+      </Drawer>
+
+      <Layout style={{ minWidth: 0, flex: 1, maxWidth: "100%" }}>
+        <Header
+          className="sms-app-header"
+          style={{
+            padding: headerPadding,
             background: colorBgContainer,
             position: "sticky",
             top: 0,
-            zIndex: 1,
+            zIndex: 100,
             width: "100%",
+            maxWidth: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: 8,
+            flexWrap: "nowrap",
           }}
         >
-          {/* Conditionally render elements in different order for RTL */}
           {isRTL ? (
             <>
-              {/* In RTL: Collapse button first (appears right), then user menu (appears left) */}
-              <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  fontSize: "16px",
-                  width: 64,
-                  height: 64,
-                }}
-              />
-              <Space>
-                <Space>
-                  <BankOutlined style={{ color: "#667eea" }} />
-                  <Text strong>{school?.schoolName}</Text>
-                </Space>
-                <Dropdown
-                  menu={{ items: languageMenuItems }}
-                  placement="bottomLeft"
-                  trigger={["click"]}
-                >
-                  <Button
-                    type="text"
-                    style={{ height: "auto", padding: "8px 12px" }}
-                  >
-                    <Space>
-                      <GlobalOutlined />
-                      <Text>{language === "ar" ? "العربية" : "English"}</Text>
-                    </Space>
-                  </Button>
-                </Dropdown>
-                <Dropdown
-                  menu={{ items: userMenuItems }}
-                  placement="bottomLeft"
-                >
-                  <Button
-                    type="text"
-                    style={{ height: "auto", padding: "8px 12px" }}
-                  >
-                    <Space>
-                      <UserOutlined />
-                      <Text>{school?.username}</Text>
-                    </Space>
-                  </Button>
-                </Dropdown>
-              </Space>
+              {headerRight}
+              {menuToggleButton}
             </>
           ) : (
             <>
-              {/* In LTR: Collapse button first (appears left), then user menu (appears right) */}
-              <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  fontSize: "16px",
-                  width: 64,
-                  height: 64,
-                }}
-              />
-              <Space>
-                <Space>
-                  <BankOutlined style={{ color: "#667eea" }} />
-                  <Text strong>{school?.schoolName}</Text>
-                </Space>
-                <Dropdown
-                  menu={{ items: languageMenuItems }}
-                  placement="bottomRight"
-                  trigger={["click"]}
-                >
-                  <Button
-                    type="text"
-                    style={{ height: "auto", padding: "8px 12px" }}
-                  >
-                    <Space>
-                      <GlobalOutlined />
-                      <Text>{language === "ar" ? "العربية" : "English"}</Text>
-                    </Space>
-                  </Button>
-                </Dropdown>
-                <Dropdown
-                  menu={{ items: userMenuItems }}
-                  placement="bottomRight"
-                >
-                  <Button
-                    type="text"
-                    style={{ height: "auto", padding: "8px 12px" }}
-                  >
-                    <Space>
-                      <UserOutlined />
-                      <Text>{school?.username}</Text>
-                    </Space>
-                  </Button>
-                </Dropdown>
-              </Space>
+              {menuToggleButton}
+              {headerRight}
             </>
           )}
         </Header>
         <Content
+          className="sms-main-content"
           style={{
-            margin: "24px 16px",
-            padding: 24,
+            margin: contentMargin,
+            padding: contentPadding,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
-            minHeight: 280,
+            minHeight: 240,
+            maxWidth: "100%",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {children}

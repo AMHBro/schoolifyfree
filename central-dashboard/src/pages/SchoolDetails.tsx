@@ -1415,6 +1415,7 @@ const SchoolDetails: React.FC = () => {
 
           {/* Keys Table */}
           <Table
+            scroll={{ x: "max-content" }}
             rowSelection={
               deleteType === "selected"
                 ? {

@@ -285,12 +285,16 @@ const Login: React.FC = () => {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        padding: "20px",
+        padding:
+          "max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))",
+        boxSizing: "border-box",
+        width: "100%",
+        maxWidth: "100%",
       }}
     >
       <Card
@@ -301,7 +305,9 @@ const Login: React.FC = () => {
           borderRadius: "12px",
           border: "none",
         }}
-        bodyStyle={{ padding: "40px" }}
+        styles={{
+          body: { padding: "clamp(24px, 6vw, 40px)" },
+        }}
       >
         <Space
           direction="vertical"

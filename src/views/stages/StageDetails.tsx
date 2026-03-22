@@ -601,6 +601,7 @@ const StageDetails: React.FC = () => {
             </Space>
           </div>
           <Table
+            scroll={{ x: "max-content" }}
             columns={columns}
             dataSource={tableData}
             rowKey="id"
@@ -627,7 +628,7 @@ const StageDetails: React.FC = () => {
           setSelectedStatus("present");
         }}
         confirmLoading={isMarkingAttendance}
-        width={500}
+        width="min(500px, calc(100vw - 32px))"
       >
         <Space direction="vertical" style={{ width: "100%" }}>
           <div>

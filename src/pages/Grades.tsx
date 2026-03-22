@@ -607,6 +607,7 @@ const Grades: React.FC = () => {
           )}
         </Typography.Text>
         <Table
+          scroll={{ x: "max-content" }}
           columns={subjectColumns}
           dataSource={subjectData}
           pagination={false}
@@ -849,6 +850,7 @@ const Grades: React.FC = () => {
       {/* Student Grades Table with Expandable Rows */}
       <Card title={t("grades.title")}>
         <Table
+          scroll={{ x: "max-content" }}
           columns={columns}
           dataSource={studentRows}
           rowKey="key"

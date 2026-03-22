@@ -237,6 +237,7 @@ const SubjectsTable: React.FC<SubjectsTableProps> = ({ searchQuery }) => {
         onClearFilters={handleClearFilters}
       />
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={displayData || []}
         rowKey="id"

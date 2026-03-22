@@ -133,6 +133,7 @@ const TeacherSchedule: React.FC = () => {
     <div className="container mx-auto px-4 py-8">
       <Title level={2}>{t("teachers.schedule.title")}</Title>
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={tableData}
         pagination={false}

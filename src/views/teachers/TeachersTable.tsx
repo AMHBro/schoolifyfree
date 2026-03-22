@@ -243,6 +243,7 @@ const TeachersTable: React.FC<TeachersTableProps> = ({ searchQuery }) => {
   return (
     <>
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={displayData || []}
         pagination={{ pageSize: 10 }}
@@ -260,7 +261,7 @@ const TeachersTable: React.FC<TeachersTableProps> = ({ searchQuery }) => {
           form.resetFields();
         }}
         footer={null}
-        width={600}
+        width="min(600px, calc(100vw - 32px))"
       >
         <Form form={form} layout="vertical" onFinish={handleEditSubmit}>
           <Form.Item

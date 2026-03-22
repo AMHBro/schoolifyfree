@@ -423,7 +423,7 @@ const ActivationKeys: React.FC = () => {
                 total: total
               }),
           }}
-          scroll={{ x: 1000 }}
+          scroll={{ x: "max-content" }}
           size="small"
         />
       </Card>

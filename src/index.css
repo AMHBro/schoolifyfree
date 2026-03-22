@@ -289,3 +289,37 @@
 [dir="rtl"] p {
   text-align: right;
 }
+
+/* —— تجاوب عام لتطبيق المدرسة (SMS) —— */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sms-root-layout {
+  box-sizing: border-box;
+}
+
+.sms-main-content {
+  box-sizing: border-box;
+}
+
+/* جداول: تمرير أفقي على الشاشات الضيقة */
+.sms-table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* درج الموبايل: نفس ثيم القائمة الداكنة */
+.sms-mobile-drawer .ant-drawer-content {
+  background: #001529;
+}
+
+.sms-mobile-drawer .ant-menu-dark {
+  background: transparent;
+}

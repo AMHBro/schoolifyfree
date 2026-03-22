@@ -313,6 +313,7 @@ const StageSchedule: React.FC<StageScheduleProps> = ({
         </Text>
       </div>
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={tableData}
         pagination={false}

@@ -225,6 +225,7 @@ const ExamsTable: React.FC<ExamsTableProps> = ({
   return (
     <>
       <Table
+        scroll={{ x: "max-content" }}
         columns={columns}
         dataSource={displayData}
         rowKey="id"
@@ -242,7 +243,7 @@ const ExamsTable: React.FC<ExamsTableProps> = ({
           form.resetFields();
         }}
         footer={null}
-        width={600}
+        width="min(600px, calc(100vw - 32px))"
       >
         <Form form={form} layout="vertical" onFinish={handleEditSubmit}>
           <Form.Item

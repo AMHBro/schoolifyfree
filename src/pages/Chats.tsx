@@ -21,7 +21,10 @@ import {
   TeamOutlined,
   SendOutlined,
   PlusOutlined,
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
 } from "@ant-design/icons";
+import { useIsNarrowScreen } from "../hooks/useIsNarrowScreen";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -340,19 +343,23 @@ const Chats: React.FC = () => {
 
       <Layout
         style={{
-          minHeight: "600px",
+          minHeight: isNarrow ? "min(70vh, 640px)" : "600px",
           background: "#fff",
           direction: isRTL ? "rtl" : "ltr",
+          flexDirection: isNarrow ? "column" : "row",
         }}
       >
         {/* Chats Sidebar */}
         <Sider
-          width={350}
+          width={isNarrow ? "100%" : 350}
           reverseArrow={isRTL}
           style={{
             background: "#fafafa",
             borderRight: isRTL ? "none" : "1px solid #f0f0f0",
             borderLeft: isRTL ? "1px solid #f0f0f0" : "none",
+            maxWidth: "100%",
+            flex: isNarrow ? "0 0 auto" : undefined,
+            display: isNarrow && selectedChat ? "none" : "block",
           }}
         >
           <div style={{ padding: "16px" }}>
@@ -460,18 +467,35 @@ const Chats: React.FC = () => {
         </Sider>
 
         {/* Messages Area */}
-        <Content style={{ display: "flex", flexDirection: "column" }}>
+        <Content
+          style={{
+            display: isNarrow && !selectedChat ? "none" : "flex",
+            flexDirection: "column",
+            flex: isNarrow ? 1 : undefined,
+            minHeight: isNarrow ? 320 : undefined,
+            minWidth: 0,
+          }}
+        >
           {selectedChat && selectedChat.participant ? (
             <>
               {/* Chat Header */}
               <div
                 style={{
-                  padding: "16px 24px",
+                  padding: isNarrow ? "12px 16px" : "16px 24px",
                   borderBottom: "1px solid #f0f0f0",
                   backgroundColor: "#fafafa",
                 }}
               >
-                <Space>
+                <Space wrap>
+                  {isNarrow && (
+                    <Button
+                      type="text"
+                      icon={isRTL ? <ArrowRightOutlined /> : <ArrowLeftOutlined />}
+                      onClick={() => setSelectedChat(null)}
+                    >
+                      {t("chats.mobile.backToList")}
+                    </Button>
+                  )}
                   <Avatar
                     icon={
                       selectedChat.participantType === "TEACHER" ? (
@@ -508,9 +532,10 @@ const Chats: React.FC = () => {
               <div
                 style={{
                   flex: 1,
-                  padding: "16px 24px",
+                  padding: isNarrow ? "12px 12px" : "16px 24px",
                   overflowY: "auto",
-                  maxHeight: "400px",
+                  maxHeight: isNarrow ? "calc(100dvh - 300px)" : "400px",
+                  minHeight: isNarrow ? 120 : undefined,
                 }}
               >
                 <Spin spinning={messagesLoading}>
@@ -626,7 +651,12 @@ const Chats: React.FC = () => {
         onOk={startNewChat}
         okText={t("chats.newChatModal.startChat")}
         okButtonProps={{ disabled: !selectedParticipant }}
-        width={600}
+        width={isNarrow ? "calc(100vw - 24px)" : 600}
+        styles={
+          isNarrow
+            ? { body: { maxHeight: "70dvh", overflowY: "auto" } }
+            : undefined
+        }
       >
         <Select
           style={{ width: "100%", marginBottom: 16 }}

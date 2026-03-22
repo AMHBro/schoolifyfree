@@ -805,6 +805,9 @@
   "chats": {
     "title": "School Chats",
     "subtitle": "Chat with teachers and students from your school",
+    "mobile": {
+      "backToList": "All chats"
+    },
     "sidebar": {
       "newChat": "New Chat",
       "noChats": "No chats yet",

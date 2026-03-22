@@ -90,6 +90,7 @@ const Requests: React.FC = () => {
     <div>
       <Title level={3}>Requests</Title>
       <Table
+        scroll={{ x: "max-content" }}
         rowKey="id"
         loading={isLoading}
         columns={columns}
