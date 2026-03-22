@@ -5,11 +5,27 @@ import { jwt } from "@elysiajs/jwt";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { t } from "elysia";
-import puppeteer from "puppeteer";
 import { loginRateLimiter, schoolCodeRateLimiter } from "./rate-limiter";
 import { dashboardChatsRoutes } from "./dashboard-chats";
 
 const prisma = new PrismaClient();
+
+/** Puppeteer يُحمَّل عند الطلب فقط — على Vercel عيّن PUPPETEER_EXECUTABLE_PATH إن استخدمت @sparticuz/chromium */
+async function launchPdfBrowser() {
+  const { default: puppeteer } = await import("puppeteer");
+  const opts: Parameters<(typeof puppeteer)["launch"]>[0] = {
+    headless: true,
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ],
+  };
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    opts.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+  return puppeteer.launch(opts);
+}
 
 // JWT Secret (in production, use environment variable)
 const JWT_SECRET =
@@ -8430,10 +8446,7 @@ Future<bool> verifyToken(String token) async {
             : "0";
 
         // Generate PDF content
-        const browser = await puppeteer.launch({
-          headless: true,
-          args: ["--no-sandbox", "--disable-setuid-sandbox"],
-        });
+        const browser = await launchPdfBrowser();
         const page = await browser.newPage();
 
         // Create HTML content for PDF
@@ -8560,10 +8573,7 @@ Future<bool> verifyToken(String token) async {
         }
 
         // Generate PDF content for all students
-        const browser = await puppeteer.launch({
-          headless: true,
-          args: ["--no-sandbox", "--disable-setuid-sandbox"],
-        });
+        const browser = await launchPdfBrowser();
         const page = await browser.newPage();
 
         const htmlPages = [];
@@ -14572,31 +14582,40 @@ Future<bool> verifyToken(String token) async {
         description: "Admin action to update a central request status",
       },
     }
-  )
+  );
 
-  .listen(process.env.PORT || 3000);
-
-const port = process.env.PORT || 3000;
-console.log(`🦊 Elysia is running at ${app.server?.hostname}:${port}`);
-console.log(
-  `📚 Swagger documentation available at http://${app.server?.hostname}:${port}/swagger`
+/** Vercel = وضع Serverless: بدون listen منفصل وبدون WebSocket محلي */
+const isVercelRuntime = Boolean(
+  process.env.VERCEL || process.env.VERCEL_ENV
 );
 
-// Start WebSocket server
-import("./websocket.ts").catch(console.error);
+if (!isVercelRuntime) {
+  app.listen(Number(process.env.PORT) || 3000);
+  const port = process.env.PORT || 3000;
+  console.log(`🦊 Elysia is running at ${app.server?.hostname}:${port}`);
+  console.log(
+    `📚 Swagger documentation available at http://${app.server?.hostname}:${port}/swagger`
+  );
 
-// Handle graceful shutdown
-process.on("SIGINT", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
+  // Start WebSocket server (غير مدعوم على Vercel Serverless — استخدم Railway أو خدمة WS منفصلة)
+  import("./websocket.ts").catch(console.error);
 
-process.on("SIGTERM", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
+  process.on("SIGINT", async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+  });
+
+  process.on("SIGTERM", async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+  });
+}
+
 console.log("Backend starting...", new Date().toISOString());
 console.log("Environment:", process.env.NODE_ENV);
 console.log("Port:", process.env.PORT);
+console.log("Vercel:", isVercelRuntime);
 console.log("Database URL configured:", !!process.env.DATABASE_URL);
 console.log("JWT Secret configured:", !!process.env.JWT_SECRET);
+
+export default app;
