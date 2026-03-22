@@ -51,18 +51,10 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { useAuth } from "../contexts/AuthContext";
-import { schoolsAPI } from "../services/api";
+import { schoolsAPI, API_BASE_URL } from "../services/api";
 import type { ColumnsType } from "antd/es/table";
 
 const { Title, Text, Paragraph } = Typography;
-
-// Main API Base URL - should match the one in services/api.ts
-const API_BASE_URL = "https://sms-backend-production-eedb.up.railway.app";
-
-// Development API Base URL - should match the one in services/api.ts
-// const API_BASE_URL = "https://backend-production-563f.up.railway.app";
-
-// const API_BASE_URL = "http://localhost:3000";
 
 interface SchoolDetailsData {
   id: string;

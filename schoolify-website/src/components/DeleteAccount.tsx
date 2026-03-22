@@ -3,8 +3,8 @@ import { useSearchParams, Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const API_BASE =
-  (import.meta as any).env?.VITE_API_BASE_URL ||
-  "https://sms-backend-production-eedb.up.railway.app";
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? "http://localhost:3000" : "");
 
 const DeleteAccount: React.FC = () => {
   const { t, isRTL } = useLanguage();

@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://sms-backend-production-eedb.up.railway.app/api/:path*"
+      "destination": "https://schoolifyfree-22pt.vercel.app/api/:path*"
     },
     {
       "source": "/auth/:path*",
-      "destination": "https://sms-backend-production-eedb.up.railway.app/auth/:path*"
+      "destination": "https://schoolifyfree-22pt.vercel.app/auth/:path*"
     },
     { "source": "/(.*)", "destination": "/index.html" }
   ]

@@ -1,11 +1,7 @@
-// Central Dashboard API Configuration
-const API_BASE_URL = "http://localhost:3000";
-
-// Development api base url
-// const API_BASE_URL = "https://backend-production-563f.up.railway.app";
-
-// Local development api base url
-// const API_BASE_URL = "http://localhost:3000";
+// Central Dashboard — الإنتاج: عيّن VITE_API_BASE_URL في Vercel (رابط الباك إند على Vercel بدون / في النهاية)
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? "http://localhost:3000" : "");
 
 // Generic fetch wrapper with error handling and auto-authentication
 async function fetchAPI<T>(
