@@ -310,3 +310,23 @@ body {
   padding: 12px;
   margin: 8px 0;
 }
+
+/* Schools page — mobile cards */
+.schools-page .schools-mobile-card {
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.schools-page .schools-mobile-card:active {
+  opacity: 0.92;
+}
+
+@media (max-width: 991px) {
+  .schools-page .ant-statistic-title {
+    font-size: 13px;
+  }
+
+  .schools-page .ant-statistic-content {
+    font-size: 20px;
+  }
+}

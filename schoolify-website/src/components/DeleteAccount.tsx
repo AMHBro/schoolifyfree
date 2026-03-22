@@ -63,7 +63,7 @@ const DeleteAccount: React.FC = () => {
   };
 
   return (
-    <div className="legal-page" style={{ paddingTop: 40 }}>
+    <div className="legal-page delete-account-page">
       <Link to="/" className="back-to-home">
         {t("deleteAccount.backToHome")}
       </Link>

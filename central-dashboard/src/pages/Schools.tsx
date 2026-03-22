@@ -17,6 +17,8 @@ import {
   Row,
   Col,
   Statistic,
+  List,
+  Pagination,
 } from "antd";
 import {
   PlusOutlined,
@@ -29,6 +31,7 @@ import {
   KeyOutlined,
 } from "@ant-design/icons";
 import { useAuth } from "../contexts/AuthContext";
+import { useIsNarrowScreen } from "../hooks/useIsNarrowScreen";
 import { schoolsAPI } from "../services/api";
 import type { ColumnsType } from "antd/es/table";
 
@@ -84,6 +87,7 @@ const Schools: React.FC = () => {
   const [pageSize, setPageSize] = useState(10);
   const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
   const [createForm] = Form.useForm();
+  const isMobile = useIsNarrowScreen();
 
   const { token } = useAuth();
   const queryClient = useQueryClient();
@@ -153,6 +157,7 @@ const Schools: React.FC = () => {
     {
       title: "Contact Info",
       key: "contact",
+      responsive: ["md"],
       render: (_, record) => (
         <Space direction="vertical" size={0}>
           {record.contactEmail && (
@@ -167,6 +172,7 @@ const Schools: React.FC = () => {
     {
       title: "Statistics",
       key: "stats",
+      responsive: ["md"],
       render: (_, record) => (
         <Space>
           <Tooltip title="Teachers">
@@ -209,6 +215,7 @@ const Schools: React.FC = () => {
       title: "Created",
       dataIndex: "createdAt",
       key: "createdAt",
+      responsive: ["lg"],
       render: (date: string) => new Date(date).toLocaleDateString(),
     },
     {
@@ -259,21 +266,31 @@ const Schools: React.FC = () => {
   const pagination = data?.data?.pagination;
 
   return (
-    <div>
-      <div style={{ marginBottom: "24px" }}>
-        <Row justify="space-between" align="middle">
-          <Col>
-            <Title level={2}>Schools Management</Title>
-            <Text type="secondary">
+    <div className="schools-page">
+      <div style={{ marginBottom: isMobile ? 16 : 24 }}>
+        <Row gutter={[0, 16]} justify="space-between" align="middle">
+          <Col xs={24} md={16} lg={18}>
+            <Title
+              level={2}
+              style={{
+                marginBottom: 4,
+                fontSize: isMobile ? "1.35rem" : undefined,
+                lineHeight: 1.3,
+              }}
+            >
+              Schools Management
+            </Title>
+            <Text type="secondary" style={{ fontSize: isMobile ? 13 : undefined }}>
               Manage all school accounts in the system
             </Text>
           </Col>
-          <Col>
+          <Col xs={24} md={8} lg={6}>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => setIsCreateModalVisible(true)}
-              size="large"
+              size={isMobile ? "middle" : "large"}
+              block={isMobile}
             >
               Create School
             </Button>
@@ -315,32 +332,169 @@ const Schools: React.FC = () => {
         </Col>
       </Row>
 
-      {/* Schools Table */}
-      <Card>
-        <Table
-          columns={columns}
-          dataSource={schools}
-          rowKey="id"
-          loading={isLoading}
-          onRow={(record) => ({
-            onClick: () => handleRowClick(record),
-            style: { cursor: "pointer" },
-          })}
-          pagination={{
-            current: currentPage,
-            pageSize: pageSize,
-            total: pagination?.total || 0,
-            showSizeChanger: true,
-            showQuickJumper: true,
-            showTotal: (total, range) =>
-              `${range[0]}-${range[1]} of ${total} schools`,
-            onChange: (page, size) => {
-              setCurrentPage(page);
-              setPageSize(size || 10);
-            },
-          }}
-        />
-      </Card>
+      {/* Schools: cards on phone, table on desktop */}
+      {isMobile ? (
+        <Card styles={{ body: { padding: 12 } }}>
+          <List
+            loading={isLoading}
+            dataSource={schools}
+            locale={{ emptyText: "No schools found" }}
+            renderItem={(school) => (
+              <List.Item style={{ padding: "8px 0", border: "none" }}>
+                <Card
+                  size="small"
+                  className="schools-mobile-card"
+                  styles={{ body: { padding: 12 } }}
+                  style={{ width: "100%", cursor: "pointer" }}
+                  onClick={() => handleRowClick(school)}
+                >
+                  <Space direction="vertical" size={8} style={{ width: "100%" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        gap: 8,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <Text strong ellipsis style={{ display: "block" }}>
+                          {school.schoolName}
+                        </Text>
+                        <Text type="secondary" style={{ fontSize: 12 }}>
+                          @{school.username}
+                        </Text>
+                      </div>
+                      <Tag
+                        color={school.isActive ? "green" : "red"}
+                        style={{ margin: 0, flexShrink: 0 }}
+                      >
+                        {school.isActive ? "Active" : "Inactive"}
+                      </Tag>
+                    </div>
+                    <Tag color="blue" style={{ margin: 0, alignSelf: "flex-start" }}>
+                      {school.schoolCode}
+                    </Tag>
+                    {(school.contactEmail || school.contactPhone) && (
+                      <Space direction="vertical" size={0}>
+                        {school.contactEmail && (
+                          <Text style={{ fontSize: 12 }} ellipsis>
+                            {school.contactEmail}
+                          </Text>
+                        )}
+                        {school.contactPhone && (
+                          <Text style={{ fontSize: 12 }}>{school.contactPhone}</Text>
+                        )}
+                      </Space>
+                    )}
+                    <Space size={[4, 4]} wrap>
+                      <Tag icon={<UserOutlined />}>{school._count.teachers}</Tag>
+                      <Tag icon={<TeamOutlined />}>{school._count.students}</Tag>
+                      <Tag icon={<BookOutlined />}>{school._count.stages}</Tag>
+                      <Tag icon={<KeyOutlined />}>
+                        {school._count?.activationKeys ?? 0}
+                      </Tag>
+                    </Space>
+                    <div
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ display: "flex", gap: 8, flexWrap: "wrap" }}
+                    >
+                      <Button
+                        type="default"
+                        size="small"
+                        icon={<KeyOutlined />}
+                        onClick={() => navigate(`/schools/${school.id}`)}
+                      >
+                        Keys
+                      </Button>
+                      <Popconfirm
+                        title={`Are you sure you want to ${
+                          school.isActive ? "deactivate" : "activate"
+                        } this school?`}
+                        onConfirm={() => handleToggleStatus(school)}
+                        okText="Yes"
+                        cancelText="No"
+                      >
+                        <Button
+                          type={school.isActive ? "default" : "primary"}
+                          size="small"
+                          danger={school.isActive}
+                          icon={
+                            school.isActive ? (
+                              <StopOutlined />
+                            ) : (
+                              <CheckCircleOutlined />
+                            )
+                          }
+                          loading={toggleStatusMutation.isPending}
+                        >
+                          {school.isActive ? "Deactivate" : "Activate"}
+                        </Button>
+                      </Popconfirm>
+                    </div>
+                    <Text type="secondary" style={{ fontSize: 11 }}>
+                      Created {new Date(school.createdAt).toLocaleDateString()}
+                    </Text>
+                  </Space>
+                </Card>
+              </List.Item>
+            )}
+          />
+          <div
+            style={{
+              marginTop: 16,
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              gap: 8,
+            }}
+          >
+            <Pagination
+              current={currentPage}
+              pageSize={pageSize}
+              total={pagination?.total || 0}
+              showSizeChanger={schools.length > 5}
+              pageSizeOptions={[5, 10, 20, 50]}
+              showTotal={(total, range) =>
+                `${range[0]}-${range[1]} / ${total}`
+              }
+              size="small"
+              onChange={(page, size) => {
+                setCurrentPage(page);
+                setPageSize(size || 10);
+              }}
+            />
+          </div>
+        </Card>
+      ) : (
+        <Card>
+          <Table
+            columns={columns}
+            dataSource={schools}
+            rowKey="id"
+            loading={isLoading}
+            scroll={{ x: "max-content" }}
+            onRow={(record) => ({
+              onClick: () => handleRowClick(record),
+              style: { cursor: "pointer" },
+            })}
+            pagination={{
+              current: currentPage,
+              pageSize: pageSize,
+              total: pagination?.total || 0,
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: (total, range) =>
+                `${range[0]}-${range[1]} of ${total} schools`,
+              onChange: (page, size) => {
+                setCurrentPage(page);
+                setPageSize(size || 10);
+              },
+            }}
+          />
+        </Card>
+      )}
 
       {/* Create School Modal */}
       <Modal
@@ -351,11 +505,13 @@ const Schools: React.FC = () => {
           createForm.resetFields();
         }}
         footer={null}
-        width={600}
+        width={isMobile ? "calc(100vw - 24px)" : 600}
+        style={isMobile ? { top: 12, maxWidth: "100%" } : undefined}
+        styles={isMobile ? { body: { maxHeight: "calc(100dvh - 120px)", overflowY: "auto" } } : undefined}
       >
         <Form form={createForm} layout="vertical" onFinish={handleCreateSchool}>
           <Row gutter={16}>
-            <Col span={12}>
+            <Col xs={24} sm={12}>
               <Form.Item
                 name="username"
                 label="Username"
@@ -370,7 +526,7 @@ const Schools: React.FC = () => {
                 <Input placeholder="Enter unique username" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} sm={12}>
               <Form.Item
                 name="password"
                 label="Password"
@@ -396,7 +552,7 @@ const Schools: React.FC = () => {
           </Form.Item>
 
           <Row gutter={16}>
-            <Col span={12}>
+            <Col xs={24} sm={12}>
               <Form.Item
                 name="contactEmail"
                 label="Contact Email"
@@ -407,7 +563,7 @@ const Schools: React.FC = () => {
                 <Input placeholder="Enter contact email" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} sm={12}>
               <Form.Item
                 name="contactPhone"
                 label="Contact Phone"

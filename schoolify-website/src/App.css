@@ -1,15 +1,29 @@
+/* App shell — mobile safe areas & no horizontal scroll */
+.App {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
+}
+
 /* Hero Section */
 .hero-section {
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
+  padding: calc(80px + env(safe-area-inset-top, 0px))
+    max(16px, env(safe-area-inset-right, 0px))
+    max(24px, env(safe-area-inset-bottom, 0px))
+    max(16px, env(safe-area-inset-left, 0px));
   position: relative;
   overflow: hidden;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .hero-section::before {
@@ -30,10 +44,12 @@
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: clamp(1.75rem, 6vw + 1rem, 4rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 2rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -68,10 +84,14 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
   margin: 0 auto;
+  max-width: 100%;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .download-btn:hover {
@@ -89,13 +109,18 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
 }
 
 .demo-window {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 350px;
+  box-sizing: border-box;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -452,9 +477,11 @@
 }
 
 .ease-content h2 {
-  font-size: 3rem;
+  font-size: clamp(1.6rem, 4vw + 1rem, 3rem);
   font-weight: 800;
   margin-bottom: 2rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   background: linear-gradient(135deg, #4f79ff 0%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -478,7 +505,8 @@
 }
 
 .mobile-frame {
-  width: 250px;
+  width: min(250px, 100%);
+  max-width: 100%;
   height: 400px;
   background: linear-gradient(135deg, #2c2c54 0%, #40407a 100%);
   border-radius: 25px;
@@ -580,9 +608,11 @@
 }
 
 .section-header h2 {
-  font-size: 4rem;
+  font-size: clamp(1.75rem, 5vw + 1rem, 4rem);
   font-weight: 800;
   margin-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -598,7 +628,10 @@
 
 .advanced-features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 260px), 1fr)
+  );
   gap: 30px;
 }
 
@@ -831,7 +864,7 @@
 .popup-close {
   position: absolute;
   top: 15px;
-  right: 20px;
+  inset-inline-end: 20px;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.7);
@@ -873,8 +906,23 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .features-section,
+  .advanced-features-section {
+    padding: 60px 0;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .feature-card {
+    padding: 28px 22px;
+  }
+
   .hero-section {
-    padding: 60px 20px;
+    padding: calc(60px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px))
+      max(20px, env(safe-area-inset-bottom, 0px))
+      max(16px, env(safe-area-inset-left, 0px));
   }
 
   .hero-title {
@@ -981,8 +1029,27 @@
 
 /* Extra small mobile screens */
 @media (max-width: 480px) {
+  .features-section,
+  .advanced-features-section {
+    padding: 48px 0;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .feature-card {
+    padding: 22px 18px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.45rem;
+  }
+
   .hero-section {
-    padding: 40px 15px;
+    padding: calc(40px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px))
+      max(16px, env(safe-area-inset-bottom, 0px))
+      max(12px, env(safe-area-inset-left, 0px));
   }
 
   .hero-title {
@@ -1059,14 +1126,14 @@
 /* Language Switcher FAB */
 .language-switcher {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  right: max(20px, env(safe-area-inset-right, 0px));
   z-index: 1000;
 }
 
 .language-switcher.rtl {
   right: auto;
-  left: 20px;
+  left: max(20px, env(safe-area-inset-left, 0px));
 }
 
 .language-fab {
@@ -1325,7 +1392,7 @@
 
 [dir="rtl"] .back-to-home {
   left: auto;
-  right: 20px;
+  right: max(20px, env(safe-area-inset-right, 0px));
 }
 
 /* RTL Typography adjustments */
@@ -1347,11 +1414,11 @@
 /* Mobile RTL adjustments */
 @media (max-width: 768px) {
   .language-switcher.rtl {
-    left: 15px;
+    left: max(15px, env(safe-area-inset-left, 0px));
   }
   
   [dir="rtl"] .back-to-home {
-    right: 15px;
+    right: max(15px, env(safe-area-inset-right, 0px));
   }
   
   [dir="rtl"] .footer-content {
@@ -1500,7 +1567,7 @@
 
   .popup-close {
     top: 10px;
-    right: 15px;
+    inset-inline-end: 15px;
     font-size: 1.5rem;
     width: 35px;
     height: 35px;
@@ -1551,12 +1618,23 @@
 /* Legal Pages Styling */
 .legal-page {
   min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-  padding: 80px 0 40px;
+  padding: calc(80px + env(safe-area-inset-top, 0px)) 0
+    max(40px, env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+}
+
+/* Delete account: room below fixed «back» on larger viewports */
+@media (min-width: 481px) {
+  .legal-page.delete-account-page {
+    padding-top: calc(100px + env(safe-area-inset-top, 0px));
+  }
 }
 
 .legal-content {
-  max-width: 800px;
+  max-width: min(800px, 100%);
+  width: 100%;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
@@ -1564,6 +1642,9 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .legal-content h1 {
@@ -1666,8 +1747,8 @@
 /* Back to Home Button */
 .back-to-home {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: max(20px, env(safe-area-inset-top, 0px));
+  left: max(20px, env(safe-area-inset-left, 0px));
   background: linear-gradient(135deg, #4f79ff 0%, #f093fb 100%);
   color: white;
   border: none;
@@ -1714,8 +1795,8 @@
   }
 
   .back-to-home {
-    top: 15px;
-    left: 15px;
+    top: max(15px, env(safe-area-inset-top, 0px));
+    left: max(15px, env(safe-area-inset-left, 0px));
     padding: 10px 20px;
     font-size: 0.8rem;
   }
