@@ -1,9 +1,7 @@
 // @ts-nocheck — نفس فحص Vercel لـ Elysia handlers (implicit any)؛ index.ts يستخدمه أيضًا.
 import { Elysia, t } from "elysia";
 import { jwt } from "@elysiajs/jwt";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "./prisma-client.ts";
 
 // JWT Secret
 const JWT_SECRET =

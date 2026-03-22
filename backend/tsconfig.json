@@ -1,5 +1,11 @@
 {
-  "include": ["index.ts", "rate-limiter.ts", "dashboard-chats.ts", "websocket.ts"],
+  "include": [
+    "index.ts",
+    "prisma-client.ts",
+    "rate-limiter.ts",
+    "dashboard-chats.ts",
+    "websocket.ts"
+  ],
   "compilerOptions": {
     // Environment setup & latest features
     "lib": ["ESNext"],

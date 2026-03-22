@@ -3,13 +3,11 @@ import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { cors } from "@elysiajs/cors";
 import { jwt } from "@elysiajs/jwt";
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { prisma } from "./prisma-client.ts";
 import { t } from "elysia";
 import { loginRateLimiter, schoolCodeRateLimiter } from "./rate-limiter";
 import { dashboardChatsRoutes } from "./dashboard-chats";
-
-const prisma = new PrismaClient();
 
 /** Puppeteer يُحمَّل عند الطلب فقط — على Vercel عيّن PUPPETEER_EXECUTABLE_PATH إن استخدمت @sparticuz/chromium */
 async function launchPdfBrowser() {
@@ -31,6 +29,11 @@ async function launchPdfBrowser() {
 // JWT Secret (in production, use environment variable)
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
+
+/** يُستخدم لتعطيل Swagger على Vercel (ثقيل جداً وقد يسبب فشل الدالة). */
+const isVercelRuntime = Boolean(
+  process.env.VERCEL || process.env.VERCEL_ENV
+);
 
 // Add a temporary default school ID for development
 const DEFAULT_SCHOOL_ID = "00000000-0000-0000-0000-000000000001";
@@ -986,6 +989,9 @@ const getStudentIdFromAuth = async (
   }
 };
 const app = new Elysia()
+  .onError(({ error, code }) => {
+    console.error("[Elysia onError]", code, error);
+  })
   .use(
     cors({
       origin: true, // Allow all origins
@@ -1011,41 +1017,43 @@ const app = new Elysia()
     })
   )
   .use(
-    swagger({
-      documentation: {
-        info: {
-          title: "SMS Backend API",
-          version: "1.0.0",
-          description: "Backend API for SMS application",
-        },
-        tags: [
-          { name: "Health", description: "Health check endpoints" },
-          {
-            name: "Auth",
-            description: "Authentication endpoints for mobile app",
+    isVercelRuntime
+      ? new Elysia()
+      : swagger({
+          documentation: {
+            info: {
+              title: "SMS Backend API",
+              version: "1.0.0",
+              description: "Backend API for SMS application",
+            },
+            tags: [
+              { name: "Health", description: "Health check endpoints" },
+              {
+                name: "Auth",
+                description: "Authentication endpoints for mobile app",
+              },
+              { name: "Teachers", description: "Teacher management endpoints" },
+              { name: "Students", description: "Student management endpoints" },
+              { name: "Stages", description: "Stage management endpoints" },
+              { name: "Subjects", description: "Subject management endpoints" },
+              { name: "Schedules", description: "Schedule management endpoints" },
+              { name: "Exams", description: "Exam management endpoints" },
+              {
+                name: "Grades",
+                description: "Grade management and PDF generation endpoints",
+              },
+              {
+                name: "Settings",
+                description: "System settings management endpoints",
+              },
+              { name: "Mobile", description: "Mobile app specific endpoints" },
+              {
+                name: "Backup",
+                description: "System backup and restore endpoints",
+              },
+            ],
           },
-          { name: "Teachers", description: "Teacher management endpoints" },
-          { name: "Students", description: "Student management endpoints" },
-          { name: "Stages", description: "Stage management endpoints" },
-          { name: "Subjects", description: "Subject management endpoints" },
-          { name: "Schedules", description: "Schedule management endpoints" },
-          { name: "Exams", description: "Exam management endpoints" },
-          {
-            name: "Grades",
-            description: "Grade management and PDF generation endpoints",
-          },
-          {
-            name: "Settings",
-            description: "System settings management endpoints",
-          },
-          { name: "Mobile", description: "Mobile app specific endpoints" },
-          {
-            name: "Backup",
-            description: "System backup and restore endpoints",
-          },
-        ],
-      },
-    })
+        })
   )
   // Health check endpoint
   .get(
@@ -14586,10 +14594,6 @@ Future<bool> verifyToken(String token) async {
   );
 
 /** Vercel = وضع Serverless: بدون listen منفصل وبدون WebSocket محلي */
-const isVercelRuntime = Boolean(
-  process.env.VERCEL || process.env.VERCEL_ENV
-);
-
 if (!isVercelRuntime) {
   app.listen(Number(process.env.PORT) || 3000);
   const port = process.env.PORT || 3000;

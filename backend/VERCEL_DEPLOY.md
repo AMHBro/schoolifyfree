@@ -28,6 +28,16 @@
 
 الكود يضبط `export default app` عندما يكون `VERCEL`/`VERCEL_ENV` معرّفًا، ولا يستدعي `.listen()` ولا يحمّل `websocket.ts`.
 
+### إن ظهر `500 FUNCTION_INVOCATION_FAILED`
+
+1. من Vercel: **Project → Logs → Functions** وابحث عن أول خطأ (Prisma، متغير بيئة، إلخ).
+2. جرّب في المتصفح: `https://مشروعك.vercel.app/health` — إن فشل، غالبًا **`DATABASE_URL`** أو اتصال قاعدة البيانات.
+3. مع **Neon**: استخدم رابط **Connection pooling** (مثل منفذ `6543` أو المعاملات الموصى بها من Neon) إن ظهرت أخطاء اتصال أو `too many connections`.
+4. نفّذ migrations على قاعدة الإنتاج مرة واحدة (محليًا مع نفس `DATABASE_URL`):  
+   `npx prisma migrate deploy`  
+   بدون جداول/مخطط صحيح قد تفشل أول استعلام.
+5. على الإنتاج **لا يُفعّل Swagger** تلقائيًا (يُعطّل على Vercel لتقليل التعطل والذاكرة).
+
 ## بعد النشر — ربط الفرونت (مرفوع مسبقًا على Vercel)
 
 1. من لوحة Vercel انسخ رابط الباك إند، مثل: `https://sms-backend-xxxx.vercel.app` (بدون `/` في النهاية).
