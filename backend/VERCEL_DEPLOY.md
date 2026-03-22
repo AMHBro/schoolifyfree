@@ -34,13 +34,12 @@
 
 ### إن ظهر `500 FUNCTION_INVOCATION_FAILED`
 
-1. من Vercel: **Project → Logs → Functions** وابحث عن أول خطأ (Prisma، متغير بيئة، إلخ).
-2. جرّب في المتصفح: `https://مشروعك.vercel.app/health` — إن فشل، غالبًا **`DATABASE_URL`** أو اتصال قاعدة البيانات.
-3. مع **Neon**: استخدم رابط **Connection pooling** (مثل منفذ `6543` أو المعاملات الموصى بها من Neon) إن ظهرت أخطاء اتصال أو `too many connections`.
-4. نفّذ migrations على قاعدة الإنتاج مرة واحدة (محليًا مع نفس `DATABASE_URL`):  
-   `npx prisma migrate deploy`  
-   بدون جداول/مخطط صحيح قد تفشل أول استعلام.
-5. على الإنتاج **لا يُفعّل Swagger** تلقائيًا (يُعطّل على Vercel لتقليل التعطل والذاكرة).
+1. من Vercel: **Project → Logs → Functions** وابحث عن أول خطأ. بعد التحديث الأخير قد ترى **`[vercel] app.fetch error:`** مع رسالة أوضح في الـ response JSON (`message`).
+2. جرّب: `https://مشروعك.vercel.app/health` (لا يمر بـ derive الثقيل). إن فشل حتى هذا، غالبًا **تحميل Prisma** أو متغيرات البيئة — تأكد أن **`prisma generate`** يعمل في البناء (`postinstall`) وأن **`schema.prisma`** يتضمن `binaryTargets` لـ Linux (موجود في المستودع).
+3. تأكد أن **`DATABASE_URL`** و **`JWT_SECRET`** مضبوطان لبيئة **Production** (وليس Preview فقط) في إعدادات Vercel.
+4. مع **Neon**: استخدم رابط **pooling** الموصى به لتقليل `too many connections` على Serverless.
+5. نفّذ `npx prisma migrate deploy` على قاعدة الإنتاج مرة واحدة على الأقل.
+6. على الإنتاج **Swagger معطّل** على Vercel في الكود.
 
 ## بعد النشر — ربط الفرونت (مرفوع مسبقًا على Vercel)
 

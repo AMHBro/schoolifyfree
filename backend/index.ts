@@ -14623,4 +14623,27 @@ console.log("Vercel:", isVercelRuntime);
 console.log("Database URL configured:", !!process.env.DATABASE_URL);
 console.log("JWT Secret configured:", !!process.env.JWT_SECRET);
 
-export default app;
+/**
+ * Vercel يلفّ الطلب في fetch؛ أي خطأ غير مُلتقط قد يسبب FUNCTION_INVOCATION_FAILED.
+ * Prisma: راجع binaryTargets في schema.prisma إن ظهر تعطل تحميل المحرك.
+ */
+export default isVercelRuntime
+  ? {
+      fetch(request: Request) {
+        return app.fetch(request).catch((err: unknown) => {
+          console.error("[vercel] app.fetch error:", err);
+          return new Response(
+            JSON.stringify({
+              ok: false,
+              error: "Internal Server Error",
+              message: err instanceof Error ? err.message : String(err),
+            }),
+            {
+              status: 500,
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        });
+      },
+    }
+  : app;
