@@ -9,6 +9,14 @@
       "source": "/auth/:path*",
       "destination": "https://schoolifyfree-22pt.vercel.app/auth/:path*"
     },
+    {
+      "source": "/central/:path*",
+      "destination": "https://schoolifyfree-22pt.vercel.app/central/:path*"
+    },
+    {
+      "source": "/central-dashboard/(.*)",
+      "destination": "/central-dashboard/index.html"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

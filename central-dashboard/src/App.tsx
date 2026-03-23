@@ -39,7 +39,7 @@ function App() {
       >
         <AntApp>
           <AuthProvider>
-            <Router>
+            <Router basename="/central-dashboard">
               <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route
