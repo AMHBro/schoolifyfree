@@ -18,6 +18,10 @@
       "source": "/central-dashboard/(.*)",
       "destination": "/central-dashboard/index.html"
     },
+    {
+      "source": "/central-dashboard",
+      "destination": "/central-dashboard/index.html"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
