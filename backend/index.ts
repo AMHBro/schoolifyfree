@@ -989,8 +989,13 @@ const getStudentIdFromAuth = async (
   }
 };
 const app = new Elysia()
-  .onError(({ error, code }) => {
+  .onError(({ error, code, set }) => {
     console.error("[Elysia onError]", code, error);
+    set.status = 500;
+    return {
+      success: false,
+      message: "Internal Server Error",
+    };
   })
   .use(
     cors({
@@ -14630,20 +14635,47 @@ console.log("JWT Secret configured:", !!process.env.JWT_SECRET);
 export default isVercelRuntime
   ? {
       fetch(request: Request) {
-        return app.fetch(request).catch((err: unknown) => {
-          console.error("[vercel] app.fetch error:", err);
-          return new Response(
-            JSON.stringify({
-              ok: false,
-              error: "Internal Server Error",
-              message: err instanceof Error ? err.message : String(err),
-            }),
-            {
-              status: 500,
-              headers: { "Content-Type": "application/json" },
+        return app
+          .fetch(request)
+          .then(async (res) => {
+            const contentType = res.headers.get("content-type") || "";
+            // إذا كانت الاستجابة ليست JSON (مثلاً صفحة Vercel خطأ)، نرجع JSON حتى لا يفشل
+            // frontend في `response.json()`.
+            if (res.ok || contentType.includes("application/json")) return res;
+
+            let text = "";
+            try {
+              text = await res.text();
+            } catch {
+              text = "";
             }
-          );
-        });
+
+            return new Response(
+              JSON.stringify({
+                success: false,
+                message: "Internal Server Error",
+                details: text.slice(0, 220),
+              }),
+              {
+                status: res.status || 500,
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+          })
+          .catch((err: unknown) => {
+            console.error("[vercel] app.fetch error:", err);
+            return new Response(
+              JSON.stringify({
+                success: false,
+                message: "Internal Server Error",
+                details: err instanceof Error ? err.message : String(err),
+              }),
+              {
+                status: 500,
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+          });
       },
     }
   : app;
